@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solutions Odoo — DevoriaTech</title>
+    <meta
+      name="description"
+      content="Découvrez comment DevoriaTech déploie Odoo ERP pour les PME d'Afrique."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .page-hero {
+        padding: 130px 5% 4rem;
+        background: var(--off-white);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .odoo-intro {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      .odoo-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--blue-light);
+        color: var(--blue-dark);
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 6px 14px;
+        border-radius: 999px;
+        margin-bottom: 1.5rem;
+      }
+      .odoo-card {
+        background: var(--charcoal);
+        border-radius: 20px;
+        padding: 2.5rem;
+      }
+      .odoo-card h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 1rem;
+      }
+      .odoo-stat-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .odoo-stat {
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: var(--radius);
+        padding: 1rem;
+        text-align: center;
+      }
+      .odoo-stat .num {
+        font-family: var(--font-display);
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--white);
+        display: block;
+      }
+      .odoo-stat .num .unit {
+        color: var(--blue);
+      }
+      .odoo-stat .lbl {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      .module-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        transition: var(--transition);
+      }
+      .module-card:hover {
+        border-color: rgba(24, 95, 165, 0.3);
+        transform: translateY(-2px);
+      }
+      .module-icon {
+        font-size: 1.75rem;
+        display: block;
+        margin-bottom: 0.75rem;
+      }
+      .module-card h3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--charcoal);
+        margin-bottom: 0.4rem;
+      }
+      .module-card p {
+        font-size: 0.82rem;
+        color: var(--charcoal-mid);
+        line-height: 1.6;
+        font-weight: 300;
+      }
+      .module-tag {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 500;
+        padding: 2px 8px;
+        border-radius: 999px;
+        margin-top: 0.75rem;
+      }
+
+      .process-detail {
+        background: var(--off-white);
+      }
+      .steps-list {
+        max-width: 780px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .step-row {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        gap: 1.5rem;
+        align-items: flex-start;
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .step-row:last-child {
+        border-bottom: none;
+      }
+      .step-circle {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--blue);
+        color: var(--white);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .step-content h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--charcoal);
+        margin-bottom: 6px;
+      }
+      .step-content p {
+        font-size: 0.875rem;
+        color: var(--charcoal-mid);
+        line-height: 1.7;
+        font-weight: 300;
+      }
+      .step-duration {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        background: var(--blue-light);
+        color: var(--blue-dark);
+        padding: 3px 10px;
+        border-radius: 999px;
+        margin-top: 8px;
+      }
+
+      .compare-table {
+        max-width: 900px;
+        margin: 0 auto;
+        overflow-x: auto;
+      }
+      .compare-table table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+      }
+      .compare-table th {
+        padding: 14px 16px;
+        text-align: left;
+        font-weight: 600;
+        font-family: var(--font-display);
+        font-size: 0.9rem;
+        border-bottom: 2px solid var(--border);
+      }
+      .compare-table th:first-child {
+        color: var(--charcoal-mid);
+        font-weight: 400;
+      }
+      .compare-table th.community {
+        color: var(--blue);
+      }
+      .compare-table th.enterprise {
+        color: var(--green);
+      }
+      .compare-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+        color: var(--charcoal-mid);
+      }
+      .compare-table td:first-child {
+        font-weight: 400;
+        color: var(--charcoal);
+      }
+      .compare-table tr:hover td {
+        background: var(--off-white);
+      }
+      .check {
+        color: var(--green);
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .check svg {
+        width: 20px;
+        height: 20px;
+      }
+      .cross {
+        color: #ccc;
+        font-size: 1rem;
+      }
+      .partial {
+        color: #f59e0b;
+        font-size: 0.8rem;
+      }
+
+      .iot-ai-section {
+        background: var(--charcoal);
+      }
+      .iot-ai-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+      }
+      .iot-ai-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+      }
+      .iot-ai-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 0.75rem;
+      }
+      .iot-ai-card p {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.7;
+        font-weight: 300;
+        margin-bottom: 1rem;
+      }
+      .iot-ai-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .iot-ai-list li {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.7);
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .iot-ai-list li::before {
+        content: "→";
+        color: var(--blue);
+        flex-shrink: 0;
+      }
+      .iot-ai-section .section-tag {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .iot-ai-section .section-title {
+        color: var(--white);
+      }
+
+      @media (max-width: 900px) {
+        .odoo-intro {
+          grid-template-columns: 1fr;
+        }
+        .iot-ai-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <span
+          class="section-tag"
+          data-fr="Notre spécialité"
+          data-en="Our specialty"
+          >Notre spécialité</span
+        >
+        <h1
+          class="section-title"
+          data-fr="Solutions Odoo ERP"
+          data-en="Odoo ERP Solutions"
+        >
+          Solutions Odoo ERP
+        </h1>
+        <p
+          class="section-sub"
+          data-fr="Odoo est l'ERP open source le plus utilisé au monde. Nous le déployons, le configurons et le formons pour les PME d'Afrique."
+          data-en="Odoo is the world's most used open source ERP. We deploy, configure and train it for SMEs across Africa."
+        >
+          Odoo est l'ERP open source le plus utilisé au monde. Nous le
+          déployons, le configurons et le formons pour les PME d'Afrique
+          francophone.
+        </p>
+      </div>
+    </section>
+
+    <!-- BANNER -->
+    <section class="banner-section">
+      <div class="banner-section-inner">
+        <img src="../media/bannière.png" alt="DevoriaTech Solutions" />
+      </div>
+    </section>
+
+    <!-- ODOO INTRO -->
+    <section>
+      <div class="container">
+        <div class="odoo-intro">
+          <div class="reveal">
+            <div class="odoo-badge">
+              <span
+                style="
+                  width: 6px;
+                  height: 6px;
+                  border-radius: 50%;
+                  background: var(--blue);
+                  display: inline-block;
+                "
+              ></span>
+              <span
+                data-fr="Partenaire Odoo indépendant"
+                data-en="Independent Odoo partner"
+                >Partenaire Odoo indépendant</span
+              >
+            </div>
+            <h2
+              class="section-title"
+              data-fr="C'est quoi Odoo ?"
+              data-en="What is Odoo?"
+            >
+              C'est quoi Odoo ?
+            </h2>
+            <p
+              style="
+                font-size: 0.95rem;
+                color: var(--charcoal-mid);
+                line-height: 1.75;
+                font-weight: 300;
+                margin-bottom: 1rem;
+              "
+              data-fr="Odoo est une suite d'applications business open source qui couvre tous les besoins de votre entreprise : ventes, achats, stock, comptabilité, CRM, RH, et bien plus — le tout dans une interface unique et intégrée."
+              data-en="Odoo is a suite of open source business applications covering all your company needs: sales, purchases, inventory, accounting, CRM, HR, and much more — all in a single, integrated interface."
+            >
+              Odoo est une suite d'applications business open source qui couvre
+              tous les besoins de votre entreprise : ventes, achats, stock,
+              comptabilité, CRM, RH, et bien plus — le tout dans une interface
+              unique et intégrée.
+            </p>
+            <p
+              style="
+                font-size: 0.95rem;
+                color: var(--charcoal-mid);
+                line-height: 1.75;
+                font-weight: 300;
+                margin-bottom: 1.5rem;
+              "
+              data-fr="Utilisé par plus de 7 millions d'utilisateurs dans 150 pays, Odoo est la solution ERP la plus populaire pour les PME — puissante comme SAP, accessible comme une startup."
+              data-en="Used by over 7 million users in 150 countries, Odoo is the most popular ERP solution for SMEs — as powerful as SAP, as accessible as a startup."
+            >
+              Utilisé par plus de 7 millions d'utilisateurs dans 150 pays, Odoo
+              est la solution ERP la plus populaire pour les PME — puissante
+              comme SAP, accessible comme une startup.
+            </p>
+            <a
+              href="../pages/contact.html"
+              class="btn-primary"
+              data-fr="Déployer Odoo pour mon entreprise →"
+              data-en="Deploy Odoo for my business →"
+              >Déployer Odoo pour mon entreprise →</a
+            >
+          </div>
+          <div class="odoo-card reveal">
+            <h3 data-fr="Odoo en chiffres" data-en="Odoo in numbers">
+              Odoo en chiffres
+            </h3>
+            <p
+              style="
+                font-size: 0.875rem;
+                color: rgba(255, 255, 255, 0.6);
+                font-weight: 300;
+                line-height: 1.6;
+              "
+              data-fr="Une solution mondiale, déployée par DevoriaTech pour l'Afrique."
+              data-en="A global solution, deployed by DevoriaTech for Africa."
+            >
+              Une solution mondiale, déployée par DevoriaTech pour l'Afrique
+              francophone.
+            </p>
+            <div class="odoo-stat-row">
+              <div class="odoo-stat">
+                <span class="num">7M<span class="unit">+</span></span
+                ><span class="lbl" data-fr="Utilisateurs" data-en="Users"
+                  >Utilisateurs</span
+                >
+              </div>
+              <div class="odoo-stat">
+                <span class="num">150<span class="unit">+</span></span
+                ><span class="lbl" data-fr="Pays" data-en="Countries"
+                  >Pays</span
+                >
+              </div>
+              <div class="odoo-stat">
+                <span class="num">80<span class="unit">+</span></span
+                ><span class="lbl">Modules</span>
+              </div>
+              <div class="odoo-stat">
+                <span class="num">100<span class="unit">%</span></span
+                ><span class="lbl">Open Source</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULES -->
+    <section style="background: var(--off-white)">
+      <div class="container">
+        <div class="section-header">
+          <span
+            class="section-tag"
+            data-fr="Les modules disponibles"
+            data-en="Available modules"
+            >Les modules disponibles</span
+          >
+          <h2
+            class="section-title"
+            data-fr="Tout ce dont votre entreprise a besoin"
+            data-en="Everything your business needs"
+          >
+            Tout ce dont votre entreprise a besoin
+          </h2>
+          <p
+            class="section-sub"
+            data-fr="Nous déployons les modules les plus demandés par les PME africaines. Vous ne payez que pour ce dont vous avez besoin."
+            data-en="We deploy the most requested modules for African SMEs. You only pay for what you need."
+          >
+            Nous déployons les modules les plus demandés par les PME africaines.
+            Vous ne payez que pour ce dont vous avez besoin.
+          </p>
+        </div>
+        <div class="modules-grid">
+          <div class="module-card reveal">
+            <span class="module-icon">🤝</span>
+            <h3>CRM</h3>
+            <p
+              data-fr="Gérez vos prospects, opportunités et pipeline de vente. Suivez chaque client de la prise de contact à la signature."
+              data-en="Manage your prospects, opportunities and sales pipeline. Track each client from first contact to signature."
+            >
+              Gérez vos prospects, opportunités et pipeline de vente.
+            </p>
+            <span
+              class="module-tag badge-blue"
+              style="background: var(--blue-light); color: var(--blue-dark)"
+              data-fr="Très demandé"
+              data-en="Highly requested"
+              >Très demandé</span
+            >
+          </div>
+          <div class="module-card reveal">
+            <span class="module-icon">💰</span>
+            <h3 data-fr="Ventes" data-en="Sales">Ventes</h3>
+            <p
+              data-fr="Créez des devis, bons de commande et factures en quelques clics. Suivez vos revenus en temps réel."
+              data-en="Create quotes, purchase orders and invoices in a few clicks. Track your revenue in real time."
+            >
+              Créez des devis, bons de commande et factures en quelques clics.
+            </p>
+            <span
+              class="module-tag badge-blue"
+              style="background: var(--blue-light); color: var(--blue-dark)"
+              data-fr="Très demandé"
+              data-en="Highly requested"
+              >Très demandé</span
+            >
+          </div>
+          <div class="module-card reveal">
+            <span class="module-icon">📦</span>
+            <h3 data-fr="Gestion des stocks" data-en="Inventory">
+              Gestion des stocks
+            </h3>
+            <p
+              data-fr="Suivez vos entrées/sorties, gérez plusieurs entrepôts et recevez des alertes de réapprovisionnement."
+              data-en="Track your stock movements, manage multiple warehouses and receive restock alerts."
+            >
+              Suivez vos entrées/sorties, gérez plusieurs entrepôts et alertes
+              de réapprovisionnement.
+            </p>
+            <span
+              class="module-tag"
+              style="background: var(--green-light); color: var(--green-dark)"
+              data-fr="Populaire"
+              data-en="Popular"
+              >Populaire</span
+            >
+          </div>
+          <div class="module-card reveal">
+            <span class="module-icon">🛒</span>
+            <h3 data-fr="Achats" data-en="Purchases">Achats</h3>
+            <p
+              data-fr="Gérez vos fournisseurs, bons de commande fournisseur et réceptions de marchandises efficacement."
+              data-en="Manage your suppliers, purchase orders and goods receipts efficiently."
+            >
+              Gérez vos fournisseurs, bons de commande et réceptions de
+              marchandises.
+            </p>
+          </div>
+          <div class="module-card reveal">
+            <span class="module-icon">📊</span>
+            <h3 data-fr="Comptabilité" data-en="Accounting">Comptabilité</h3>
+            <p
+              data-fr="Facturation, suivi des paiements, rapprochement bancaire et états financiers automatisés."
+              data-en="Invoicing, payment tracking, bank reconciliation and automated financial statements."
+            >
+              Facturation, paiements, rapprochement bancaire et états
+              financiers.
+            </p>
+          </div>
+          <div class="module-card reveal">
+            <span class="module-icon">👥</span>
+            <h3 data-fr="Ressources humaines" data-en="Human Resources">
+              Ressources humaines
+            </h3>
+            <p
+              data-fr="Gestion des employés, congés, notes de frais et évaluations de performance."
+              data-en="Employee management, leave, expense reports and performance evaluations."
+            >
+              Gestion des employés, congés, notes de frais et évaluations.
+            </p>
+          </div>
+          <div class="module-card reveal">
+            <span class="module-icon">🌐</span>
+            <h3 data-fr="Site web" data-en="Website">Site web</h3>
+            <p
+              data-fr="Créez votre site web directement dans Odoo avec un éditeur visuel et intégration e-commerce."
+              data-en="Create your website directly in Odoo with a visual editor and e-commerce integration."
+            >
+              Site web avec éditeur visuel et intégration e-commerce native.
+            </p>
+          </div>
+          <div class="module-card reveal">
+            <span class="module-icon">📧</span>
+            <h3 data-fr="Email Marketing" data-en="Email Marketing">
+              Email Marketing
+            </h3>
+            <p
+              data-fr="Créez et envoyez des campagnes email ciblées directement depuis Odoo, avec suivi des résultats."
+              data-en="Create and send targeted email campaigns directly from Odoo, with results tracking."
+            >
+              Campagnes email ciblées avec suivi des résultats intégré.
+            </p>
+          </div>
+          <div class="module-card reveal">
+            <span class="module-icon">🔧</span>
+            <h3 data-fr="Maintenance" data-en="Maintenance">Maintenance</h3>
+            <p
+              data-fr="Planifiez les maintenances préventives et correctives, gérez vos équipements et techniciens."
+              data-en="Plan preventive and corrective maintenance, manage your equipment and technicians."
+            >
+              Maintenance préventive/corrective, équipements et techniciens.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESSUS DÉTAILLÉ -->
+    <section class="process-detail">
+      <div class="container">
+        <div class="section-header centered">
+          <span
+            class="section-tag"
+            data-fr="Comment on travaille"
+            data-en="How we work"
+            >Comment on travaille</span
+          >
+          <h2
+            class="section-title"
+            data-fr="Notre processus d'implémentation"
+            data-en="Our implementation process"
+          >
+            Notre processus d'implémentation
+          </h2>
+        </div>
+        <div class="steps-list">
+          <div class="step-row reveal">
+            <div class="step-circle">1</div>
+            <div class="step-content">
+              <h4 data-fr="Analyse & cadrage" data-en="Analysis & scoping">
+                Analyse & cadrage
+              </h4>
+              <p
+                data-fr="On étudie votre activité en détail — vos processus actuels, vos besoins, vos contraintes et vos objectifs. C'est la base de tout projet réussi. Aucune ligne de code n'est écrite avant cette étape."
+                data-en="We study your business in detail — your current processes, needs, constraints and objectives. This is the foundation of every successful project. No code is written before this step."
+              >
+                On étudie votre activité en détail — vos processus actuels, vos
+                besoins, vos contraintes et vos objectifs. C'est la base de tout
+                projet réussi.
+              </p>
+              <span class="step-duration" data-fr="1–2 jours" data-en="1–2 days"
+                >1–2 jours</span
+              >
+            </div>
+          </div>
+          <div class="step-row reveal">
+            <div class="step-circle">2</div>
+            <div class="step-content">
+              <h4 data-fr="Proposition & devis" data-en="Proposal & quote">
+                Proposition & devis
+              </h4>
+              <p
+                data-fr="Nous vous soumettons un devis détaillé avec les modules recommandés, le planning de livraison et les conditions. Acompte de 50% à la signature pour démarrer."
+                data-en="We submit a detailed quote with recommended modules, delivery schedule and terms. 50% deposit on signature to start."
+              >
+                Devis détaillé avec modules recommandés, planning et conditions.
+                Acompte de 50% à la signature.
+              </p>
+              <span class="step-duration" data-fr="24–48h" data-en="24–48h"
+                >24–48h</span
+              >
+            </div>
+          </div>
+          <div class="step-row reveal">
+            <div class="step-circle">3</div>
+            <div class="step-content">
+              <h4
+                data-fr="Installation & configuration"
+                data-en="Installation & configuration"
+              >
+                Installation & configuration
+              </h4>
+              <p
+                data-fr="Installation d'Odoo sur votre serveur (ou cloud), configuration de vos modules, paramétrage selon votre activité, import de vos données existantes (clients, produits, stock...)."
+                data-en="Odoo installation on your server (or cloud), module configuration, setup per your business, import of your existing data (clients, products, inventory...)."
+              >
+                Installation, configuration, paramétrage et import de vos
+                données existantes.
+              </p>
+              <span
+                class="step-duration"
+                data-fr="1–3 semaines"
+                data-en="1–3 weeks"
+                >1–3 semaines</span
+              >
+            </div>
+          </div>
+          <div class="step-row reveal">
+            <div class="step-circle">4</div>
+            <div class="step-content">
+              <h4 data-fr="Tests & validation" data-en="Testing & validation">
+                Tests & validation
+              </h4>
+              <p
+                data-fr="Nous testons chaque module avec vos données réelles et vous impliquons dans la validation. Tout bug est corrigé avant la mise en production."
+                data-en="We test each module with your real data and involve you in validation. Every bug is fixed before go-live."
+              >
+                Tests complets avec vos données réelles. Tout est validé avant
+                la mise en production.
+              </p>
+              <span class="step-duration" data-fr="2–5 jours" data-en="2–5 days"
+                >2–5 jours</span
+              >
+            </div>
+          </div>
+          <div class="step-row reveal">
+            <div class="step-circle">5</div>
+            <div class="step-content">
+              <h4 data-fr="Formation de vos équipes" data-en="Team training">
+                Formation de vos équipes
+              </h4>
+              <p
+                data-fr="Formation de vos utilisateurs sur les modules déployés — en visio ou en présentiel. Documentation personnalisée remise à la fin. Votre équipe est autonome dès le départ."
+                data-en="Training your users on deployed modules — via video or in person. Personalized documentation provided at the end. Your team is autonomous from day one."
+              >
+                Formation en visio ou en présentiel. Documentation personnalisée
+                remise à la fin.
+              </p>
+              <span
+                class="step-duration"
+                data-fr="4h – 2 jours"
+                data-en="4h – 2 days"
+                >4h – 2 jours</span
+              >
+            </div>
+          </div>
+          <div class="step-row reveal">
+            <div class="step-circle">6</div>
+            <div class="step-content">
+              <h4
+                data-fr="Support post-livraison"
+                data-en="Post-delivery support"
+              >
+                Support post-livraison
+              </h4>
+              <p
+                data-fr="Support technique inclus (30 ou 60 jours selon le package) après la mise en production. Pour les besoins continus, une maintenance mensuelle est disponible."
+                data-en="Technical support included (30 or 60 days per package) after go-live. For ongoing needs, monthly maintenance is available."
+              >
+                Support inclus 30 à 60 jours. Maintenance mensuelle disponible
+                pour les besoins continus.
+              </p>
+              <span
+                class="step-duration"
+                data-fr="30–60 jours inclus"
+                data-en="30–60 days included"
+                >30–60 jours inclus</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY VS ENTERPRISE -->
+    <section>
+      <div class="container">
+        <div class="section-header centered">
+          <span
+            class="section-tag"
+            data-fr="Quelle version choisir ?"
+            data-en="Which version to choose?"
+            >Quelle version choisir ?</span
+          >
+          <h2
+            class="section-title"
+            data-fr="Community vs Enterprise"
+            data-en="Community vs Enterprise"
+          >
+            Community vs Enterprise
+          </h2>
+          <p
+            class="section-sub"
+            data-fr="Les deux versions sont très puissantes. Pour la majorité des PME africaines, Odoo Community est largement suffisant."
+            data-en="Both versions are very powerful. For the majority of African SMEs, Odoo Community is more than sufficient."
+          >
+            Pour la majorité des PME africaines, Odoo Community est largement
+            suffisant.
+          </p>
+        </div>
+        <div class="compare-table reveal">
+          <table>
+            <thead>
+              <tr>
+                <th data-fr="Fonctionnalité" data-en="Feature">
+                  Fonctionnalité
+                </th>
+                <th class="community">Community</th>
+                <th class="enterprise">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-fr="Coût de la licence" data-en="License cost">
+                  Coût de la licence
+                </td>
+                <td
+                  style="color: var(--green); font-weight: 500"
+                  data-fr="Gratuit"
+                  data-en="Free"
+                >
+                  Gratuit
+                </td>
+                <td
+                  style="color: var(--charcoal-mid)"
+                  data-fr="Abonnement annuel"
+                  data-en="Annual subscription"
+                >
+                  Abonnement annuel
+                </td>
+              </tr>
+              <tr>
+                <td data-fr="CRM & Ventes" data-en="CRM & Sales">
+                  CRM & Ventes
+                </td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <td data-fr="Gestion des stocks" data-en="Inventory">
+                  Gestion des stocks
+                </td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <td data-fr="Achats" data-en="Purchases">Achats</td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <td data-fr="Comptabilité complète" data-en="Full accounting">
+                  Comptabilité complète
+                </td>
+                <td><span class="partial">Basique</span></td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  data-fr="Signature électronique"
+                  data-en="Electronic signature"
+                >
+                  Signature électronique
+                </td>
+                <td><span class="cross">—</span></td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <td data-fr="Modules IoT" data-en="IoT modules">Modules IoT</td>
+                <td><span class="cross">—</span></td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  data-fr="Support officiel Odoo"
+                  data-en="Official Odoo support"
+                >
+                  Support officiel Odoo
+                </td>
+                <td><span class="cross">—</span></td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  data-fr="Modules custom Python"
+                  data-en="Custom Python modules"
+                >
+                  Modules custom Python
+                </td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+                <td>
+                  <span class="check"
+                    ><svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      style="display: inline-block"
+                    >
+                      <path
+                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                      /></svg
+                  ></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p
+          style="
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--charcoal-mid);
+            margin-top: 1.5rem;
+            font-weight: 300;
+          "
+          data-fr="Vous ne savez pas quelle version choisir ? On vous conseille gratuitement."
+          data-en="Not sure which version to choose? We advise you for free."
+        >
+          Vous ne savez pas quelle version choisir ?
+          <a
+            href="../pages/contact.html"
+            style="color: var(--blue)"
+            data-fr="On vous conseille gratuitement →"
+            data-en="We advise you for free →"
+            >On vous conseille gratuitement →</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <!-- IOT & IA -->
+    <section class="iot-ai-section">
+      <div class="container" style="padding: 6rem 0">
+        <div class="section-header centered">
+          <span
+            class="section-tag"
+            data-fr="Aller plus loin"
+            data-en="Going further"
+            >Aller plus loin</span
+          >
+          <h2
+            class="section-title"
+            data-fr="Odoo + IoT & Intelligence Artificielle"
+            data-en="Odoo + IoT & Artificial Intelligence"
+          >
+            Odoo + IoT & Intelligence Artificielle
+          </h2>
+          <p
+            class="section-sub"
+            style="color: rgba(255, 255, 255, 0.6); margin: 0 auto 3rem"
+            data-fr="Notre PFE démontre notre capacité à aller au-delà d'un Odoo standard — avec des intégrations IoT et IA sur mesure."
+            data-en="Our final-year project demonstrates our ability to go beyond standard Odoo — with custom IoT and AI integrations."
+          >
+            Notre expertise dépasse un Odoo standard — avec des intégrations IoT
+            et IA sur mesure.
+          </p>
+        </div>
+        <div class="iot-ai-grid">
+          <div class="iot-ai-card reveal">
+            <h3>
+              🔌
+              <span data-fr="Intégration IoT" data-en="IoT Integration"
+                >Intégration IoT</span
+              >
+            </h3>
+            <p
+              data-fr="Connectez vos équipements physiques (capteurs, balances, scanners, machines) directement à Odoo pour un suivi en temps réel de votre production ou de votre stock."
+              data-en="Connect your physical equipment (sensors, scales, scanners, machines) directly to Odoo for real-time monitoring of your production or inventory."
+            >
+              Connectez vos équipements physiques à Odoo pour un suivi en temps
+              réel.
+            </p>
+            <ul class="iot-ai-list">
+              <li
+                data-fr="Capteurs de stock connectés à Odoo"
+                data-en="Inventory sensors connected to Odoo"
+              >
+                Capteurs de stock connectés à Odoo
+              </li>
+              <li
+                data-fr="Scanners de codes-barres et QR"
+                data-en="Barcode and QR scanners"
+              >
+                Scanners de codes-barres et QR
+              </li>
+              <li
+                data-fr="Alertes automatiques en temps réel"
+                data-en="Automatic real-time alerts"
+              >
+                Alertes automatiques en temps réel
+              </li>
+              <li
+                data-fr="Tableau de bord de monitoring IoT"
+                data-en="IoT monitoring dashboard"
+              >
+                Tableau de bord de monitoring IoT
+              </li>
+            </ul>
+          </div>
+          <div class="iot-ai-card reveal">
+            <h3>
+              🤖
+              <span
+                data-fr="Intelligence Artificielle"
+                data-en="Artificial Intelligence"
+                >Intelligence Artificielle</span
+              >
+            </h3>
+            <p
+              data-fr="Intégrez l'IA directement dans vos processus Odoo pour prédire, recommander et automatiser intelligemment vos opérations."
+              data-en="Integrate AI directly into your Odoo processes to predict, recommend and intelligently automate your operations."
+            >
+              Intégrez l'IA pour prédire, recommander et automatiser vos
+              opérations.
+            </p>
+            <ul class="iot-ai-list">
+              <li
+                data-fr="Prévision des ventes par IA"
+                data-en="AI-powered sales forecasting"
+              >
+                Prévision des ventes par IA
+              </li>
+              <li
+                data-fr="Recommandations de réapprovisionnement"
+                data-en="Restocking recommendations"
+              >
+                Recommandations de réapprovisionnement
+              </li>
+              <li
+                data-fr="Analyse de sentiment client (CRM)"
+                data-en="Customer sentiment analysis (CRM)"
+              >
+                Analyse de sentiment client (CRM)
+              </li>
+              <li
+                data-fr="Génération automatique de rapports"
+                data-en="Automatic report generation"
+              >
+                Génération automatique de rapports
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <span
+          class="section-tag"
+          data-fr="Prêt à digitaliser ?"
+          data-en="Ready to digitalize?"
+          >Prêt à digitaliser ?</span
+        >
+        <h2
+          class="section-title"
+          data-fr="Déployons Odoo pour votre entreprise"
+          data-en="Let's deploy Odoo for your business"
+        >
+          Déployons Odoo pour votre entreprise
+        </h2>
+        <p
+          class="section-sub"
+          data-fr="Premier échange gratuit. Réponse sous 24h. Package Starter dès 800 €."
+          data-en="First consultation free. Response within 24h. Starter package from €800."
+        >
+          Premier échange gratuit. Réponse sous 24h. Package Starter dès 800 €.
+        </p>
+        <div class="cta-actions" style="margin-top: 2rem">
+          <a
+            href="../pages/contact.html"
+            class="btn-white"
+            data-fr="Demander un devis →"
+            data-en="Request a quote →"
+            >Demander un devis →</a
+          >
+          <a
+            href="https://wa.me/VOTRE_NUMERO"
+            class="btn-whatsapp"
+            target="_blank"
+            >💬 WhatsApp</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      renderNav("Solutions Odoo");
+      renderFooter();
+    </script>
+  </body>
+</html>

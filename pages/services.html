@@ -1,0 +1,1168 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services — DevoriaTech</title>
+    <meta
+      name="description"
+      content="Découvrez toutes les solutions digitales de DevoriaTech : Odoo ERP, sites web, apps mobiles, formation et IA."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .page-hero {
+        padding: 130px 5% 4rem;
+        background: var(--off-white);
+        border-bottom: 1px solid var(--border);
+      }
+      .page-hero .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+      .service-block {
+        padding: 5rem 5%;
+        border-bottom: 1px solid var(--border);
+      }
+      .service-block:nth-child(even) {
+        background: var(--off-white);
+      }
+      .service-block-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .service-block:nth-child(even) .service-block-inner {
+        direction: rtl;
+      }
+      .service-block:nth-child(even) .service-block-inner > * {
+        direction: ltr;
+      }
+      .service-block-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+      .service-block h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--charcoal);
+        margin-bottom: 1rem;
+      }
+      .service-block p {
+        font-size: 0.95rem;
+        color: var(--charcoal-mid);
+        line-height: 1.75;
+        margin-bottom: 1.5rem;
+        font-weight: 300;
+      }
+      .feature-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 2rem;
+      }
+      .feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: var(--charcoal-mid);
+      }
+      .feature-list li::before {
+        content: "•";
+        color: var(--green);
+        font-weight: 600;
+        flex-shrink: 0;
+        margin-top: 1px;
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+      .service-visual {
+        background: var(--charcoal-light);
+        border-radius: 20px;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .service-visual-inner {
+        text-align: center;
+      }
+      .service-visual-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+      .service-visual-label {
+        font-family: var(--font-display);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--charcoal);
+      }
+
+      .pricing-section {
+        padding: 6rem 5%;
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .pricing-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+      }
+      .pricing-card.featured {
+        border: 2px solid var(--blue);
+      }
+      .pricing-badge {
+        font-size: 0.75rem;
+        font-weight: 500;
+        background: var(--blue-light);
+        color: var(--blue-dark);
+        padding: 4px 12px;
+        border-radius: 999px;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+      .pricing-name {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--charcoal);
+        margin-bottom: 0.5rem;
+      }
+      .pricing-price {
+        font-family: var(--font-display);
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--blue);
+        letter-spacing: -0.04em;
+        margin-bottom: 4px;
+      }
+      .pricing-price span {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: var(--charcoal-mid);
+        font-family: var(--font-body);
+      }
+      .pricing-desc {
+        font-size: 0.85rem;
+        color: var(--charcoal-mid);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        font-weight: 300;
+      }
+      .pricing-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+        margin-bottom: 2rem;
+      }
+      .pricing-features li {
+        display: flex;
+        gap: 8px;
+        font-size: 0.875rem;
+        color: var(--charcoal-mid);
+        align-items: flex-start;
+      }
+      .pricing-features li::before {
+        content: "✓";
+        color: var(--green);
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+      .pricing-card .btn-primary,
+      .pricing-card .btn-secondary {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .rates-table {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .rates-table table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      .rates-table th {
+        background: var(--charcoal);
+        color: var(--white);
+        padding: 12px 16px;
+        text-align: left;
+        font-weight: 500;
+        font-family: var(--font-display);
+        font-size: 0.85rem;
+      }
+      .rates-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+        color: var(--charcoal-mid);
+      }
+      .rates-table tr:hover td {
+        background: var(--off-white);
+      }
+      .price-cell {
+        font-weight: 500;
+        color: var(--blue);
+        font-family: var(--font-display);
+      }
+
+      @media (max-width: 900px) {
+        .service-block-inner {
+          grid-template-columns: 1fr;
+          direction: ltr !important;
+        }
+        .service-block:nth-child(even) .service-block-inner {
+          direction: ltr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <span
+          class="section-tag"
+          data-fr="Ce que nous proposons"
+          data-en="What we offer"
+          >Ce que nous proposons</span
+        >
+        <h1
+          class="section-title"
+          data-fr="Nos services digitaux"
+          data-en="Our digital services"
+        >
+          Nos services digitaux
+        </h1>
+        <p
+          class="section-sub"
+          data-fr="Des solutions complètes pour digitaliser votre entreprise, de l'ERP au site web en passant par les applications mobiles."
+          data-en="Complete solutions to digitalize your business, from ERP to website and mobile apps."
+        >
+          Des solutions complètes pour digitaliser votre entreprise, de l'ERP au
+          site web en passant par les applications mobiles.
+        </p>
+      </div>
+    </section>
+
+    <!-- BANNER -->
+    <section class="banner-section">
+      <div class="banner-section-inner">
+        <img src="../media/bannière.png" alt="DevoriaTech Solutions" />
+      </div>
+    </section>
+
+    <!-- SERVICE 1 — ODOO -->
+    <div class="service-block">
+      <div class="service-block-inner">
+        <div class="reveal">
+          <div class="service-block-icon" style="background: var(--blue-light)">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+              <rect
+                x="3"
+                y="3"
+                width="7"
+                height="7"
+                rx="1.5"
+                stroke="#185FA5"
+                stroke-width="1.8"
+              />
+              <rect
+                x="14"
+                y="3"
+                width="7"
+                height="7"
+                rx="1.5"
+                stroke="#185FA5"
+                stroke-width="1.8"
+              />
+              <rect
+                x="3"
+                y="14"
+                width="7"
+                height="7"
+                rx="1.5"
+                stroke="#185FA5"
+                stroke-width="1.8"
+              />
+              <rect
+                x="14"
+                y="14"
+                width="7"
+                height="7"
+                rx="1.5"
+                stroke="#185FA5"
+                stroke-width="1.8"
+              />
+            </svg>
+          </div>
+          <h2
+            data-fr="Implémentation Odoo ERP/CRM"
+            data-en="Odoo ERP/CRM Implementation"
+          >
+            Implémentation Odoo ERP/CRM
+          </h2>
+          <p
+            data-fr="Odoo est l'un des ERP les plus puissants et accessibles du marché. Nous déployons et configurons Odoo pour votre activité spécifique — que vous soyez dans le commerce, la distribution, les services ou l'industrie."
+            data-en="Odoo is one of the most powerful and accessible ERPs on the market. We deploy and configure Odoo for your specific activity — whether you're in trade, distribution, services or industry."
+          >
+            Odoo est l'un des ERP les plus puissants et accessibles du marché.
+            Nous déployons et configurons Odoo pour votre activité spécifique —
+            que vous soyez dans le commerce, la distribution, les services ou
+            l'industrie.
+          </p>
+          <ul class="feature-list">
+            <li
+              data-fr="Installation Odoo Community ou Enterprise"
+              data-en="Odoo Community or Enterprise installation"
+            >
+              Installation Odoo Community ou Enterprise
+            </li>
+            <li
+              data-fr="Modules CRM, Ventes, Stock, Achats, Comptabilité"
+              data-en="CRM, Sales, Inventory, Purchases, Accounting modules"
+            >
+              Modules CRM, Ventes, Stock, Achats, Comptabilité
+            </li>
+            <li
+              data-fr="Migration de vos données existantes"
+              data-en="Migration of your existing data"
+            >
+              Migration de vos données existantes
+            </li>
+            <li
+              data-fr="Développement de modules personnalisés"
+              data-en="Custom module development"
+            >
+              Développement de modules personnalisés
+            </li>
+            <li
+              data-fr="Formation de vos équipes incluse"
+              data-en="Team training included"
+            >
+              Formation de vos équipes incluse
+            </li>
+            <li
+              data-fr="Intégration IoT et IA possible"
+              data-en="IoT and AI integration possible"
+            >
+              Intégration IoT et IA possible
+            </li>
+          </ul>
+          <a
+            href="../pages/contact.html"
+            class="btn-primary"
+            data-fr="Demander un devis →"
+            data-en="Request a quote →"
+            >Demander un devis →</a
+          >
+        </div>
+        <div class="service-visual reveal">
+          <div class="service-visual-inner">
+            <div class="service-visual-icon">📊</div>
+            <div class="service-visual-label">Odoo ERP</div>
+            <p
+              style="
+                font-size: 0.85rem;
+                color: var(--charcoal-mid);
+                margin-top: 0.5rem;
+                padding: 0 1.5rem;
+              "
+              data-fr="Gérez toute votre entreprise depuis une seule plateforme."
+              data-en="Manage your entire business from a single platform."
+            >
+              Gérez toute votre entreprise depuis une seule plateforme.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 2 — WEB -->
+    <div class="service-block">
+      <div class="service-block-inner">
+        <div class="reveal">
+          <div
+            class="service-block-icon"
+            style="background: var(--green-light)"
+          >
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+              <rect
+                x="3"
+                y="4"
+                width="18"
+                height="14"
+                rx="2"
+                stroke="#0F6E56"
+                stroke-width="1.8"
+              />
+              <path
+                d="M8 20h8M12 18v2"
+                stroke="#0F6E56"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <h2 data-fr="Création de sites web" data-en="Website Creation">
+            Création de sites web
+          </h2>
+          <p
+            data-fr="Un site web professionnel est votre première vitrine digitale. Nous créons des sites modernes, rapides et optimisés pour convertir vos visiteurs en clients, adaptés à votre secteur et à votre marché."
+            data-en="A professional website is your first digital showcase. We create modern, fast sites optimized to convert visitors into clients, tailored to your sector and market."
+          >
+            Un site web professionnel est votre première vitrine digitale. Nous
+            créons des sites modernes, rapides et optimisés pour convertir vos
+            visiteurs en clients, adaptés à votre secteur et à votre marché.
+          </p>
+          <ul class="feature-list">
+            <li
+              data-fr="Site vitrine professionnel (5 à 10 pages)"
+              data-en="Professional showcase site (5 to 10 pages)"
+            >
+              Site vitrine professionnel (5 à 10 pages)
+            </li>
+            <li
+              data-fr="Site e-commerce avec gestion des commandes"
+              data-en="E-commerce site with order management"
+            >
+              Site e-commerce avec gestion des commandes
+            </li>
+            <li
+              data-fr="Design responsive — parfait sur mobile"
+              data-en="Responsive design — perfect on mobile"
+            >
+              Design responsive — parfait sur mobile
+            </li>
+            <li
+              data-fr="Optimisation SEO incluse"
+              data-en="SEO optimization included"
+            >
+              Optimisation SEO incluse
+            </li>
+            <li
+              data-fr="Bilingue français/anglais si besoin"
+              data-en="Bilingual French/English if needed"
+            >
+              Bilingue français/anglais si besoin
+            </li>
+            <li
+              data-fr="Intégration formulaire de contact et WhatsApp"
+              data-en="Contact form and WhatsApp integration"
+            >
+              Intégration formulaire de contact et WhatsApp
+            </li>
+          </ul>
+          <a
+            href="../pages/contact.html"
+            class="btn-primary"
+            data-fr="Demander un devis →"
+            data-en="Request a quote →"
+            >Demander un devis →</a
+          >
+        </div>
+        <div class="service-visual reveal">
+          <div class="service-visual-inner">
+            <div class="service-visual-icon">🌐</div>
+            <div
+              class="service-visual-label"
+              data-fr="Sites web"
+              data-en="Websites"
+            >
+              Sites web
+            </div>
+            <p
+              style="
+                font-size: 0.85rem;
+                color: var(--charcoal-mid);
+                margin-top: 0.5rem;
+                padding: 0 1.5rem;
+              "
+              data-fr="Du vitrine au e-commerce, sur mesure."
+              data-en="From showcase to e-commerce, tailor-made."
+            >
+              Du vitrine au e-commerce, sur mesure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 3 — MOBILE -->
+    <div class="service-block">
+      <div class="service-block-inner">
+        <div class="reveal">
+          <div class="service-block-icon" style="background: #eeedfe">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+              <rect
+                x="7"
+                y="2"
+                width="10"
+                height="20"
+                rx="2"
+                stroke="#534AB7"
+                stroke-width="1.8"
+              />
+              <circle cx="12" cy="18" r="1" fill="#534AB7" />
+            </svg>
+          </div>
+          <h2 data-fr="Applications mobiles" data-en="Mobile Applications">
+            Applications mobiles
+          </h2>
+          <p
+            data-fr="En Afrique, le mobile est le premier écran. Nous développons des applications iOS et Android pour digitaliser vos processus terrain, améliorer l'expérience client ou créer de nouveaux canaux de vente."
+            data-en="In Africa, mobile is the first screen. We develop iOS and Android apps to digitalize your field processes, improve customer experience or create new sales channels."
+          >
+            En Afrique, le mobile est le premier écran. Nous développons des
+            applications iOS et Android pour digitaliser vos processus terrain,
+            améliorer l'expérience client ou créer de nouveaux canaux de vente.
+          </p>
+          <ul class="feature-list">
+            <li
+              data-fr="Applications iOS et Android natives ou hybrides"
+              data-en="Native or hybrid iOS and Android apps"
+            >
+              Applications iOS et Android natives ou hybrides
+            </li>
+            <li
+              data-fr="MVP (Minimum Viable Product) pour valider votre idée"
+              data-en="MVP to validate your idea"
+            >
+              MVP (Minimum Viable Product) pour valider votre idée
+            </li>
+            <li
+              data-fr="Intégration avec Odoo ou votre système existant"
+              data-en="Integration with Odoo or your existing system"
+            >
+              Intégration avec Odoo ou votre système existant
+            </li>
+            <li
+              data-fr="Interface intuitive adaptée au contexte africain"
+              data-en="Intuitive interface adapted to the African context"
+            >
+              Interface intuitive adaptée au contexte africain
+            </li>
+            <li
+              data-fr="Mode hors-ligne disponible si besoin"
+              data-en="Offline mode available if needed"
+            >
+              Mode hors-ligne disponible si besoin
+            </li>
+          </ul>
+          <a
+            href="../pages/contact.html"
+            class="btn-primary"
+            data-fr="Discutons de votre projet →"
+            data-en="Let's discuss your project →"
+            >Discutons de votre projet →</a
+          >
+        </div>
+        <div class="service-visual reveal">
+          <div class="service-visual-inner">
+            <div class="service-visual-icon">📱</div>
+            <div
+              class="service-visual-label"
+              data-fr="Apps mobiles"
+              data-en="Mobile apps"
+            >
+              Apps mobiles
+            </div>
+            <p
+              style="
+                font-size: 0.85rem;
+                color: var(--charcoal-mid);
+                margin-top: 0.5rem;
+                padding: 0 1.5rem;
+              "
+              data-fr="iOS & Android, pensés pour l'Afrique."
+              data-en="iOS & Android, designed for Africa."
+            >
+              iOS & Android, pensés pour l'Afrique.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 4 — FORMATION -->
+    <div class="service-block">
+      <div class="service-block-inner">
+        <div class="reveal">
+          <div
+            class="service-block-icon"
+            style="background: var(--green-light)"
+          >
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5z"
+                stroke="#0F6E56"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2 17l10 5 10-5M2 12l10 5 10-5"
+                stroke="#0F6E56"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <h2 data-fr="Formation & accompagnement" data-en="Training & Support">
+            Formation & accompagnement
+          </h2>
+          <p
+            data-fr="Un outil digital n'a de valeur que si vos équipes savent l'utiliser. Nous formons vos collaborateurs sur Odoo et vos outils, et nous restons disponibles après la livraison pour garantir une adoption réussie."
+            data-en="A digital tool only has value if your teams know how to use it. We train your staff on Odoo and your tools, and remain available after delivery to guarantee successful adoption."
+          >
+            Un outil digital n'a de valeur que si vos équipes savent l'utiliser.
+            Nous formons vos collaborateurs sur Odoo et vos outils, et nous
+            restons disponibles après la livraison pour garantir une adoption
+            réussie.
+          </p>
+          <ul class="feature-list">
+            <li
+              data-fr="Formations Odoo par module (demi-journée ou journée)"
+              data-en="Odoo module training (half-day or full day)"
+            >
+              Formations Odoo par module (demi-journée ou journée)
+            </li>
+            <li
+              data-fr="Documentation personnalisée pour votre équipe"
+              data-en="Personalized documentation for your team"
+            >
+              Documentation personnalisée pour votre équipe
+            </li>
+            <li
+              data-fr="Formation en présentiel ou à distance"
+              data-en="In-person or remote training"
+            >
+              Formation en présentiel ou à distance
+            </li>
+            <li
+              data-fr="Support technique mensuel disponible"
+              data-en="Monthly technical support available"
+            >
+              Support technique mensuel disponible
+            </li>
+            <li
+              data-fr="Suivi post-implémentation 30 à 90 jours"
+              data-en="Post-implementation follow-up 30 to 90 days"
+            >
+              Suivi post-implémentation 30 à 90 jours
+            </li>
+          </ul>
+          <a
+            href="../pages/contact.html"
+            class="btn-primary"
+            data-fr="Planifier une formation →"
+            data-en="Schedule training →"
+            >Planifier une formation →</a
+          >
+        </div>
+        <div class="service-visual reveal">
+          <div class="service-visual-inner">
+            <div class="service-visual-icon">🎓</div>
+            <div
+              class="service-visual-label"
+              data-fr="Formation"
+              data-en="Training"
+            >
+              Formation
+            </div>
+            <p
+              style="
+                font-size: 0.85rem;
+                color: var(--charcoal-mid);
+                margin-top: 0.5rem;
+                padding: 0 1.5rem;
+              "
+              data-fr="Vos équipes, autonomes et performantes."
+              data-en="Your teams, autonomous and high-performing."
+            >
+              Vos équipes, autonomes et performantes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 5 — IA -->
+    <div class="service-block">
+      <div class="service-block-inner">
+        <div class="reveal">
+          <div class="service-block-icon" style="background: #faeeda">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+              <circle
+                cx="12"
+                cy="12"
+                r="3"
+                stroke="#854F0B"
+                stroke-width="1.8"
+              />
+              <path
+                d="M12 2v3M12 19v3M2 12h3M19 12h3"
+                stroke="#854F0B"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <h2
+            data-fr="Automatisation & Intelligence Artificielle"
+            data-en="Automation & Artificial Intelligence"
+          >
+            Automatisation & Intelligence Artificielle
+          </h2>
+          <p
+            data-fr="Automatisez les tâches répétitives et exploitez la puissance de l'IA pour gagner en efficacité. De la prévision des ventes à la génération automatique de rapports, nous intégrons l'IA là où elle a du sens pour votre activité."
+            data-en="Automate repetitive tasks and leverage the power of AI to gain efficiency. From sales forecasting to automatic report generation, we integrate AI where it makes sense for your business."
+          >
+            Automatisez les tâches répétitives et exploitez la puissance de l'IA
+            pour gagner en efficacité. De la prévision des ventes à la
+            génération automatique de rapports, nous intégrons l'IA là où elle a
+            du sens pour votre activité.
+          </p>
+          <ul class="feature-list">
+            <li
+              data-fr="Automatisation des workflows Odoo"
+              data-en="Odoo workflow automation"
+            >
+              Automatisation des workflows Odoo
+            </li>
+            <li
+              data-fr="Intégration d'IA pour la prévision et recommandation"
+              data-en="AI integration for forecasting and recommendation"
+            >
+              Intégration d'IA pour la prévision et recommandation
+            </li>
+            <li
+              data-fr="Intégration IoT pour le suivi en temps réel"
+              data-en="IoT integration for real-time monitoring"
+            >
+              Intégration IoT pour le suivi en temps réel
+            </li>
+            <li
+              data-fr="Tableaux de bord intelligents et alertes"
+              data-en="Smart dashboards and alerts"
+            >
+              Tableaux de bord intelligents et alertes
+            </li>
+            <li
+              data-fr="Prototype livré en 2 à 4 semaines"
+              data-en="Prototype delivered in 2 to 4 weeks"
+            >
+              Prototype livré en 2 à 4 semaines
+            </li>
+          </ul>
+          <a
+            href="../pages/contact.html"
+            class="btn-primary"
+            data-fr="Découvrir les possibilités →"
+            data-en="Explore possibilities →"
+            >Découvrir les possibilités →</a
+          >
+        </div>
+        <div class="service-visual reveal">
+          <div class="service-visual-inner">
+            <div class="service-visual-icon">🤖</div>
+            <div class="service-visual-label">IA & Automation</div>
+            <p
+              style="
+                font-size: 0.85rem;
+                color: var(--charcoal-mid);
+                margin-top: 0.5rem;
+                padding: 0 1.5rem;
+              "
+              data-fr="L'intelligence artificielle au service de votre croissance."
+              data-en="Artificial intelligence at the service of your growth."
+            >
+              L'intelligence artificielle au service de votre croissance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING -->
+    <section class="pricing-section" style="background: var(--off-white)">
+      <div class="container">
+        <div class="section-header centered">
+          <span
+            class="section-tag"
+            data-fr="Nos packages Odoo"
+            data-en="Our Odoo packages"
+            >Nos packages Odoo</span
+          >
+          <h2
+            class="section-title"
+            data-fr="Tarifs clairs et transparents"
+            data-en="Clear and transparent pricing"
+          >
+            Tarifs clairs et transparents
+          </h2>
+          <p
+            class="section-sub"
+            data-fr="Tous nos prix sont en EUR. Acompte de 50% à la signature, solde à la livraison."
+            data-en="All prices are in EUR. 50% deposit on signature, balance on delivery."
+          >
+            Tous nos prix sont en EUR. Acompte de 50% à la signature, solde à la
+            livraison.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card reveal">
+            <div class="pricing-name">Starter</div>
+            <div class="pricing-price">
+              800 € <span data-fr="one-shot" data-en="one-time">one-shot</span>
+            </div>
+            <p
+              class="pricing-desc"
+              data-fr="Pour les TPE et startups qui démarrent leur digitalisation."
+              data-en="For micro-enterprises and startups beginning their digitalization."
+            >
+              Pour les TPE et startups qui démarrent leur digitalisation.
+            </p>
+            <ul class="pricing-features">
+              <li
+                data-fr="Installation Odoo Community"
+                data-en="Odoo Community installation"
+              >
+                Installation Odoo Community
+              </li>
+              <li
+                data-fr="2 modules (ex. CRM + Ventes)"
+                data-en="2 modules (e.g. CRM + Sales)"
+              >
+                2 modules (ex. CRM + Ventes)
+              </li>
+              <li data-fr="Paramétrage de base" data-en="Basic configuration">
+                Paramétrage de base
+              </li>
+              <li data-fr="Formation 4h en ligne" data-en="4h online training">
+                Formation 4h en ligne
+              </li>
+              <li data-fr="Support 30 jours" data-en="30-day support">
+                Support 30 jours
+              </li>
+            </ul>
+            <a
+              href="../pages/contact.html"
+              class="btn-secondary"
+              data-fr="Choisir Starter"
+              data-en="Choose Starter"
+              >Choisir Starter</a
+            >
+          </div>
+          <div class="pricing-card featured reveal">
+            <div
+              class="pricing-badge"
+              data-fr="Le plus demandé"
+              data-en="Most popular"
+            >
+              Le plus demandé
+            </div>
+            <div class="pricing-name">Business</div>
+            <div class="pricing-price">
+              1 800 €
+              <span data-fr="one-shot" data-en="one-time">one-shot</span>
+            </div>
+            <p
+              class="pricing-desc"
+              data-fr="Pour les PME qui veulent un ERP complet et opérationnel."
+              data-en="For SMEs wanting a complete and operational ERP."
+            >
+              Pour les PME qui veulent un ERP complet et opérationnel.
+            </p>
+            <ul class="pricing-features">
+              <li
+                data-fr="Odoo Community ou Enterprise"
+                data-en="Odoo Community or Enterprise"
+              >
+                Odoo Community ou Enterprise
+              </li>
+              <li
+                data-fr="4 modules (CRM, Ventes, Stock, Achats)"
+                data-en="4 modules (CRM, Sales, Stock, Purchases)"
+              >
+                4 modules (CRM, Ventes, Stock, Achats)
+              </li>
+              <li
+                data-fr="Paramétrage avancé + données initiales"
+                data-en="Advanced setup + initial data"
+              >
+                Paramétrage avancé + données initiales
+              </li>
+              <li
+                data-fr="Migration de données existantes"
+                data-en="Existing data migration"
+              >
+                Migration de données existantes
+              </li>
+              <li
+                data-fr="Formation 8h + documentation"
+                data-en="8h training + documentation"
+              >
+                Formation 8h + documentation
+              </li>
+              <li data-fr="Support 60 jours" data-en="60-day support">
+                Support 60 jours
+              </li>
+            </ul>
+            <a
+              href="../pages/contact.html"
+              class="btn-primary"
+              data-fr="Choisir Business"
+              data-en="Choose Business"
+              >Choisir Business</a
+            >
+          </div>
+          <div class="pricing-card reveal">
+            <div class="pricing-name">Enterprise</div>
+            <div
+              class="pricing-price"
+              data-fr="Sur devis"
+              data-en="Custom quote"
+            >
+              Sur devis
+            </div>
+            <p
+              class="pricing-desc"
+              data-fr="Pour les entreprises avec des besoins spécifiques et intégrations complexes."
+              data-en="For companies with specific needs and complex integrations."
+            >
+              Pour les entreprises avec des besoins spécifiques et intégrations
+              complexes.
+            </p>
+            <ul class="pricing-features">
+              <li
+                data-fr="Tous modules selon votre besoin"
+                data-en="All modules per your needs"
+              >
+                Tous modules selon votre besoin
+              </li>
+              <li
+                data-fr="Développement de modules custom"
+                data-en="Custom module development"
+              >
+                Développement de modules custom
+              </li>
+              <li
+                data-fr="Intégration IoT et IA"
+                data-en="IoT and AI integration"
+              >
+                Intégration IoT et IA
+              </li>
+              <li
+                data-fr="Formation équipe complète"
+                data-en="Full team training"
+              >
+                Formation équipe complète
+              </li>
+              <li
+                data-fr="Support 6 à 12 mois"
+                data-en="6 to 12 months support"
+              >
+                Support 6 à 12 mois
+              </li>
+              <li data-fr="SLA garanti" data-en="Guaranteed SLA">
+                SLA garanti
+              </li>
+            </ul>
+            <a
+              href="../pages/contact.html"
+              class="btn-secondary"
+              data-fr="Demander un devis"
+              data-en="Request a quote"
+              >Demander un devis</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARIFS À LA CARTE -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <span
+            class="section-tag"
+            data-fr="Autres services"
+            data-en="Other services"
+            >Autres services</span
+          >
+          <h2
+            class="section-title"
+            data-fr="Tarifs à la carte"
+            data-en="À la carte pricing"
+          >
+            Tarifs à la carte
+          </h2>
+        </div>
+        <div class="rates-table">
+          <table>
+            <thead>
+              <tr>
+                <th data-fr="Service" data-en="Service">Service</th>
+                <th data-fr="Fourchette de prix" data-en="Price range">
+                  Fourchette de prix
+                </th>
+                <th data-fr="Délai moyen" data-en="Average timeline">
+                  Délai moyen
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td
+                  data-fr="Site web vitrine (5–8 pages)"
+                  data-en="Showcase website (5–8 pages)"
+                >
+                  Site web vitrine (5–8 pages)
+                </td>
+                <td class="price-cell">400 – 900 €</td>
+                <td data-fr="2–3 semaines" data-en="2–3 weeks">2–3 semaines</td>
+              </tr>
+              <tr>
+                <td data-fr="Site e-commerce" data-en="E-commerce website">
+                  Site e-commerce
+                </td>
+                <td class="price-cell">900 – 2 500 €</td>
+                <td data-fr="3–6 semaines" data-en="3–6 weeks">3–6 semaines</td>
+              </tr>
+              <tr>
+                <td
+                  data-fr="Application mobile (MVP)"
+                  data-en="Mobile application (MVP)"
+                >
+                  Application mobile (MVP)
+                </td>
+                <td class="price-cell">2 000 – 5 000 €</td>
+                <td data-fr="6–12 semaines" data-en="6–12 weeks">
+                  6–12 semaines
+                </td>
+              </tr>
+              <tr>
+                <td
+                  data-fr="Formation Odoo (demi-journée)"
+                  data-en="Odoo training (half-day)"
+                >
+                  Formation Odoo (demi-journée)
+                </td>
+                <td class="price-cell">150 – 300 €</td>
+                <td data-fr="1 jour" data-en="1 day">1 jour</td>
+              </tr>
+              <tr>
+                <td
+                  data-fr="Automatisation IA (prototype)"
+                  data-en="AI automation (prototype)"
+                >
+                  Automatisation IA (prototype)
+                </td>
+                <td class="price-cell">500 – 1 500 €</td>
+                <td data-fr="2–4 semaines" data-en="2–4 weeks">2–4 semaines</td>
+              </tr>
+              <tr>
+                <td
+                  data-fr="Maintenance mensuelle"
+                  data-en="Monthly maintenance"
+                >
+                  Maintenance mensuelle
+                </td>
+                <td class="price-cell">100 – 400 €/mois</td>
+                <td data-fr="Récurrent" data-en="Recurring">Récurrent</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <span
+          class="section-tag"
+          data-fr="Prêt à démarrer ?"
+          data-en="Ready to start?"
+          >Prêt à démarrer ?</span
+        >
+        <h2
+          class="section-title"
+          data-fr="Parlons de votre projet"
+          data-en="Let's talk about your project"
+        >
+          Parlons de votre projet
+        </h2>
+        <p
+          class="section-sub"
+          data-fr="Premier échange gratuit et sans engagement. Réponse sous 24h."
+          data-en="First consultation free and with no commitment. Response within 24h."
+        >
+          Premier échange gratuit et sans engagement. Réponse sous 24h.
+        </p>
+        <div class="cta-actions">
+          <a
+            href="../pages/contact.html"
+            class="btn-white"
+            data-fr="Demander un devis →"
+            data-en="Request a quote →"
+            >Demander un devis →</a
+          >
+          <a
+            href="https://wa.me/VOTRE_NUMERO"
+            class="btn-whatsapp"
+            target="_blank"
+            ><svg
+              width="18"
+              height="18"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              style="
+                display: inline-block;
+                margin-right: 6px;
+                vertical-align: middle;
+              "
+            >
+              <path
+                d="M20.1 3.9C18.9 2.7 17.5 2 16 2c-1.3 0-2.5.4-3.6 1.3-1.1-.9-2.4-1.3-3.6-1.3-4.5 0-8 3.5-8 8 0 1.4.4 2.8 1.3 3.6l-.3 3.7 3.7-.3c.8.9 2.2 1.4 3.6 1.4 4.5 0 8-3.5 8-8 0-1.3-.4-2.5-1.3-3.6zm-7.9 13.5c-1.1 0-2.1-.3-3-.9l-.2-.1-2.3.2.2-2.3-.1-.2c-.6-.9-.9-1.9-.9-3 0-3.3 2.7-6 6-6 3.3 0 6 2.7 6 6 0 3.3-2.7 6-6 6z"
+              /></svg
+            >WhatsApp</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      renderNav("Services");
+      renderFooter();
+    </script>
+  </body>
+</html>

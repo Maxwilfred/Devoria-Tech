@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — DevoriaTech</title>
+    <meta
+      name="description"
+      content="Contactez DevoriaTech pour votre projet de digitalisation. Réponse garantie sous 24h."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .page-hero {
+        padding: 130px 5% 4rem;
+        background: var(--off-white);
+        border-bottom: 1px solid var(--border);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 4rem;
+        align-items: start;
+      }
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .contact-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        transition: var(--transition);
+      }
+      .contact-card:hover {
+        border-color: rgba(24, 95, 165, 0.3);
+      }
+      .contact-card-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 1.2rem;
+      }
+      .contact-card h4 {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--charcoal-mid);
+        margin-bottom: 4px;
+      }
+      .contact-card p,
+      .contact-card a {
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: var(--charcoal);
+        line-height: 1.5;
+      }
+      .contact-card a:hover {
+        color: var(--blue);
+      }
+
+      .contact-form-wrap {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2.5rem;
+      }
+      .contact-form-wrap h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--charcoal);
+        margin-bottom: 0.5rem;
+      }
+      .contact-form-wrap p {
+        font-size: 0.875rem;
+        color: var(--charcoal-mid);
+        margin-bottom: 2rem;
+        font-weight: 300;
+      }
+      .form-success {
+        display: none;
+        background: var(--green-light);
+        color: var(--green-dark);
+        border-radius: var(--radius);
+        padding: 1rem 1.25rem;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        text-align: center;
+      }
+      .form-success.show {
+        display: block;
+      }
+
+      .whatsapp-cta {
+        background: #25d366;
+        color: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+        text-align: center;
+      }
+      .whatsapp-cta h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .whatsapp-cta p {
+        font-size: 0.85rem;
+        opacity: 0.85;
+        margin-bottom: 1.25rem;
+        font-weight: 300;
+      }
+      .whatsapp-cta a {
+        background: var(--white);
+        color: #25d366;
+        padding: 0.75rem 1.75rem;
+        border-radius: var(--radius);
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        transition: var(--transition);
+      }
+      .whatsapp-cta a:hover {
+        transform: translateY(-1px);
+      }
+
+      .faq-section {
+        background: var(--off-white);
+      }
+      .faq-list {
+        max-width: 700px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .faq-item {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+      }
+      .faq-q {
+        padding: 1.25rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--charcoal);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        user-select: none;
+      }
+      .faq-q:hover {
+        color: var(--blue);
+      }
+      .faq-toggle {
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: var(--charcoal-mid);
+        transition: var(--transition);
+      }
+      .faq-a {
+        display: none;
+        padding: 0 1.5rem 1.25rem;
+        font-size: 0.875rem;
+        color: var(--charcoal-mid);
+        line-height: 1.7;
+        font-weight: 300;
+      }
+      .faq-item.open .faq-a {
+        display: block;
+      }
+      .faq-item.open .faq-toggle {
+        transform: rotate(45deg);
+      }
+
+      @media (max-width: 900px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <span
+          class="section-tag"
+          data-fr="On vous répond sous 24h"
+          data-en="We respond within 24h"
+          >On vous répond sous 24h</span
+        >
+        <h1
+          class="section-title"
+          data-fr="Parlons de votre projet"
+          data-en="Let's talk about your project"
+        >
+          Parlons de votre projet
+        </h1>
+        <p
+          class="section-sub"
+          data-fr="Premier échange gratuit et sans engagement. Remplissez le formulaire ou écrivez-nous directement sur WhatsApp."
+          data-en="First consultation free and with no commitment. Fill in the form or write to us directly on WhatsApp."
+        >
+          Premier échange gratuit et sans engagement. Remplissez le formulaire
+          ou écrivez-nous directement sur WhatsApp.
+        </p>
+      </div>
+    </section>
+
+    <!-- BANNER -->
+    <section class="banner-section">
+      <div class="banner-section-inner">
+        <img src="../media/bannière.png" alt="DevoriaTech Solutions" />
+      </div>
+    </section>
+
+    <!-- CONTACT MAIN -->
+    <section>
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Info -->
+          <div class="reveal">
+            <div class="contact-info">
+              <div class="contact-card">
+                <div
+                  class="contact-card-icon"
+                  style="background: var(--blue-light)"
+                >
+                  📧
+                </div>
+                <div>
+                  <h4 data-fr="Email" data-en="Email">Email</h4>
+                  <a href="mailto:contact@devoriatech.com"
+                    >contact@devoriatech.com</a
+                  >
+                </div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-card-icon" style="background: #e8f8ee">
+                  <svg
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    style="margin-bottom: 1rem"
+                  >
+                    <path
+                      d="M20.1 3.9C18.9 2.7 17.5 2 16 2c-1.3 0-2.5.4-3.6 1.3-1.1-.9-2.4-1.3-3.6-1.3-4.5 0-8 3.5-8 8 0 1.4.4 2.8 1.3 3.6l-.3 3.7 3.7-.3c.8.9 2.2 1.4 3.6 1.4 4.5 0 8-3.5 8-8 0-1.3-.4-2.5-1.3-3.6zm-7.9 13.5c-1.1 0-2.1-.3-3-.9l-.2-.1-2.3.2.2-2.3-.1-.2c-.6-.9-.9-1.9-.9-3 0-3.3 2.7-6 6-6 3.3 0 6 2.7 6 6 0 3.3-2.7 6-6 6z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4>WhatsApp</h4>
+                  <a
+                    href="https://wa.me/VOTRE_NUMERO"
+                    target="_blank"
+                    data-fr="Écrire sur WhatsApp →"
+                    data-en="Message on WhatsApp →"
+                    >Écrire sur WhatsApp →</a
+                  >
+                </div>
+              </div>
+              <div class="contact-card">
+                <div
+                  class="contact-card-icon"
+                  style="background: var(--blue-light)"
+                >
+                  💼
+                </div>
+                <div>
+                  <h4>LinkedIn</h4>
+                  <a
+                    href="https://linkedin.com/in/maxwilfred-gak"
+                    target="_blank"
+                    >linkedin.com/in/maxwilfred-gak</a
+                  >
+                </div>
+              </div>
+              <div class="contact-card">
+                <div
+                  class="contact-card-icon"
+                  style="background: var(--charcoal-light)"
+                >
+                  📍
+                </div>
+                <div>
+                  <h4 data-fr="Localisation" data-en="Location">
+                    Localisation
+                  </h4>
+                  <p
+                    data-fr="Casablanca, Maroc · Abidjan, Côte d'Ivoire"
+                    data-en="Casablanca, Morocco · Abidjan, Côte d'Ivoire"
+                  >
+                    Casablanca, Maroc · Abidjan, Côte d'Ivoire
+                  </p>
+                </div>
+              </div>
+              <div class="contact-card">
+                <div
+                  class="contact-card-icon"
+                  style="background: var(--green-light)"
+                >
+                  ⏰
+                </div>
+                <div>
+                  <h4 data-fr="Disponibilité" data-en="Availability">
+                    Disponibilité
+                  </h4>
+                  <p
+                    data-fr="Lun–Sam · 9h–19h (GMT+1)"
+                    data-en="Mon–Sat · 9am–7pm (GMT+1)"
+                  >
+                    Lun–Sam · 9h–19h (GMT+1)
+                  </p>
+                </div>
+              </div>
+
+              <!-- WhatsApp CTA -->
+              <div class="whatsapp-cta">
+                <h3 data-fr="Préférez WhatsApp ?" data-en="Prefer WhatsApp?">
+                  Préférez WhatsApp ?
+                </h3>
+                <p
+                  data-fr="En Afrique, c'est souvent plus rapide. On vous répond en quelques minutes."
+                  data-en="In Africa, it's often faster. We reply in minutes."
+                >
+                  En Afrique, c'est souvent plus rapide. On vous répond en
+                  quelques minutes.
+                </p>
+                <a href="https://wa.me/VOTRE_NUMERO" target="_blank"
+                  ><svg
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    style="
+                      display: inline-block;
+                      margin-right: 8px;
+                      vertical-align: middle;
+                    "
+                  >
+                    <path
+                      d="M20.1 3.9C18.9 2.7 17.5 2 16 2c-1.3 0-2.5.4-3.6 1.3-1.1-.9-2.4-1.3-3.6-1.3-4.5 0-8 3.5-8 8 0 1.4.4 2.8 1.3 3.6l-.3 3.7 3.7-.3c.8.9 2.2 1.4 3.6 1.4 4.5 0 8-3.5 8-8 0-1.3-.4-2.5-1.3-3.6zm-7.9 13.5c-1.1 0-2.1-.3-3-.9l-.2-.1-2.3.2.2-2.3-.1-.2c-.6-.9-.9-1.9-.9-3 0-3.3 2.7-6 6-6 3.3 0 6 2.7 6 6 0 3.3-2.7 6-6 6z"
+                    />
+                  </svg>
+                  <span
+                    data-fr="Écrire sur WhatsApp"
+                    data-en="Message on WhatsApp"
+                    >Écrire sur WhatsApp</span
+                  ></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="contact-form-wrap reveal">
+            <h2 data-fr="Envoyez-nous un message" data-en="Send us a message">
+              Envoyez-nous un message
+            </h2>
+            <p
+              data-fr="Décrivez votre projet et nous vous recontactons sous 24h avec une proposition."
+              data-en="Describe your project and we'll get back to you within 24h with a proposal."
+            >
+              Décrivez votre projet et nous vous recontactons sous 24h avec une
+              proposition.
+            </p>
+            <form
+              action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+              method="POST"
+              id="contactForm"
+            >
+              <div class="form-grid">
+                <div class="form-group">
+                  <label
+                    class="form-label"
+                    for="prenom"
+                    data-fr="Prénom *"
+                    data-en="First name *"
+                    >Prénom *</label
+                  >
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="prenom"
+                    name="prenom"
+                    required
+                    data-fr-placeholder="Votre prénom"
+                    data-en-placeholder="Your first name"
+                    placeholder="Votre prénom"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    class="form-label"
+                    for="nom"
+                    data-fr="Nom *"
+                    data-en="Last name *"
+                    >Nom *</label
+                  >
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    required
+                    data-fr-placeholder="Votre nom"
+                    data-en-placeholder="Your last name"
+                    placeholder="Votre nom"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  class="form-label"
+                  for="email"
+                  data-fr="Email *"
+                  data-en="Email *"
+                  >Email *</label
+                >
+                <input
+                  class="form-input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  data-fr-placeholder="votre@email.com"
+                  data-en-placeholder="your@email.com"
+                  placeholder="votre@email.com"
+                />
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label
+                    class="form-label"
+                    for="pays"
+                    data-fr="Pays *"
+                    data-en="Country *"
+                    >Pays *</label
+                  >
+                  <select class="form-select" id="pays" name="pays" required>
+                    <option
+                      value=""
+                      data-fr="Sélectionner..."
+                      data-en="Select..."
+                    >
+                      Sélectionner...
+                    </option>
+                    <option value="maroc">🇲🇦 Maroc</option>
+                    <option value="cote-ivoire">🇨🇮 Côte d'Ivoire</option>
+                    <option value="senegal">🇸🇳 Sénégal</option>
+                    <option value="cameroun">🇨🇲 Cameroun</option>
+                    <option value="autre" data-fr="Autre" data-en="Other">
+                      Autre
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label
+                    class="form-label"
+                    for="service"
+                    data-fr="Service souhaité *"
+                    data-en="Desired service *"
+                    >Service souhaité *</label
+                  >
+                  <select
+                    class="form-select"
+                    id="service"
+                    name="service"
+                    required
+                  >
+                    <option value="" data-fr="Choisir..." data-en="Choose...">
+                      Choisir...
+                    </option>
+                    <option
+                      value="odoo"
+                      data-fr="Implémentation Odoo"
+                      data-en="Odoo Implementation"
+                    >
+                      Implémentation Odoo
+                    </option>
+                    <option value="web" data-fr="Site web" data-en="Website">
+                      Site web
+                    </option>
+                    <option
+                      value="mobile"
+                      data-fr="Application mobile"
+                      data-en="Mobile app"
+                    >
+                      Application mobile
+                    </option>
+                    <option
+                      value="formation"
+                      data-fr="Formation Odoo"
+                      data-en="Odoo Training"
+                    >
+                      Formation Odoo
+                    </option>
+                    <option
+                      value="ia"
+                      data-fr="Automatisation / IA"
+                      data-en="Automation / AI"
+                    >
+                      Automatisation / IA
+                    </option>
+                    <option
+                      value="autre"
+                      data-fr="Autre / Je ne sais pas encore"
+                      data-en="Other / Not sure yet"
+                    >
+                      Autre
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  class="form-label"
+                  for="budget"
+                  data-fr="Budget estimé"
+                  data-en="Estimated budget"
+                  >Budget estimé</label
+                >
+                <select class="form-select" id="budget" name="budget">
+                  <option
+                    value=""
+                    data-fr="Sélectionner une fourchette"
+                    data-en="Select a range"
+                  >
+                    Sélectionner une fourchette
+                  </option>
+                  <option
+                    value="lt500"
+                    data-fr="Moins de 500 €"
+                    data-en="Less than €500"
+                  >
+                    Moins de 500 €
+                  </option>
+                  <option value="500-1500">500 € – 1 500 €</option>
+                  <option value="1500-3000">1 500 € – 3 000 €</option>
+                  <option
+                    value="gt3000"
+                    data-fr="Plus de 3 000 €"
+                    data-en="More than €3,000"
+                  >
+                    Plus de 3 000 €
+                  </option>
+                  <option
+                    value="unknown"
+                    data-fr="Je ne sais pas encore"
+                    data-en="Not sure yet"
+                  >
+                    Je ne sais pas encore
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label
+                  class="form-label"
+                  for="message"
+                  data-fr="Décrivez votre projet *"
+                  data-en="Describe your project *"
+                  >Décrivez votre projet *</label
+                >
+                <textarea
+                  class="form-textarea"
+                  id="message"
+                  name="message"
+                  required
+                  data-fr-placeholder="Parlez-nous de votre entreprise, de vos besoins et de vos objectifs..."
+                  data-en-placeholder="Tell us about your business, your needs and your objectives..."
+                  placeholder="Parlez-nous de votre entreprise, de vos besoins et de vos objectifs..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn-primary"
+                style="width: 100%; justify-content: center"
+                data-fr="Envoyer le message →"
+                data-en="Send message →"
+              >
+                Envoyer le message →
+              </button>
+              <div
+                class="form-success"
+                id="formSuccess"
+                data-fr="✓ Message envoyé ! Nous vous répondrons sous 24h."
+                data-en="✓ Message sent! We'll get back to you within 24h."
+              >
+                ✓ Message envoyé ! Nous vous répondrons sous 24h.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header centered">
+          <span
+            class="section-tag"
+            data-fr="Questions fréquentes"
+            data-en="Frequently asked questions"
+            >Questions fréquentes</span
+          >
+          <h2
+            class="section-title"
+            data-fr="Ce que nos clients demandent souvent"
+            data-en="What our clients often ask"
+          >
+            Ce que nos clients demandent souvent
+          </h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span
+                data-fr="Combien coûte une implémentation Odoo ?"
+                data-en="How much does an Odoo implementation cost?"
+                >Combien coûte une implémentation Odoo ?</span
+              ><span class="faq-toggle">+</span>
+            </div>
+            <div
+              class="faq-a"
+              data-fr="Nos packages démarrent à 800 € pour le Starter (2 modules) et 1 800 € pour le Business (4 modules). Pour des projets plus complexes, nous établissons un devis sur mesure. Premier échange toujours gratuit."
+              data-en="Our packages start from €800 for Starter (2 modules) and €1,800 for Business (4 modules). For more complex projects, we provide a custom quote. First consultation always free."
+            >
+              Nos packages démarrent à 800 € pour le Starter (2 modules) et 1
+              800 € pour le Business (4 modules). Pour des projets plus
+              complexes, nous établissons un devis sur mesure. Premier échange
+              toujours gratuit.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span
+                data-fr="Vous intervenez à distance ou en présentiel ?"
+                data-en="Do you work remotely or on-site?"
+                >Vous intervenez à distance ou en présentiel ?</span
+              ><span class="faq-toggle">+</span>
+            </div>
+            <div
+              class="faq-a"
+              data-fr="Les deux. La majorité de nos projets se font à distance (appel vidéo, accès serveur distant). Pour les clients au Maroc ou en Côte d'Ivoire, nous pouvons intervenir en présentiel selon le projet."
+              data-en="Both. Most of our projects are done remotely (video call, remote server access). For clients in Morocco or Côte d'Ivoire, we can intervene on-site depending on the project."
+            >
+              Les deux. La majorité de nos projets se font à distance (appel
+              vidéo, accès serveur distant). Pour les clients au Maroc ou en
+              Côte d'Ivoire, nous pouvons intervenir en présentiel selon le
+              projet.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span
+                data-fr="Quelles sont vos conditions de paiement ?"
+                data-en="What are your payment terms?"
+                >Quelles sont vos conditions de paiement ?</span
+              ><span class="faq-toggle">+</span>
+            </div>
+            <div
+              class="faq-a"
+              data-fr="50% à la signature du devis, 50% à la livraison finale. Nous acceptons les virements bancaires, Wave, Orange Money et autres moyens courants en Afrique."
+              data-en="50% on quote signature, 50% on final delivery. We accept bank transfers, Wave, Orange Money and other common methods in Africa."
+            >
+              50% à la signature du devis, 50% à la livraison finale. Nous
+              acceptons les virements bancaires, Wave, Orange Money et autres
+              moyens courants en Afrique.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span
+                data-fr="Combien de temps dure une implémentation Odoo ?"
+                data-en="How long does an Odoo implementation take?"
+                >Combien de temps dure une implémentation Odoo ?</span
+              ><span class="faq-toggle">+</span>
+            </div>
+            <div
+              class="faq-a"
+              data-fr="Le package Starter est livré en 1 à 2 semaines. Le Business en 3 à 5 semaines. Les projets Enterprise dépendent de la complexité — nous établissons un planning détaillé à la signature."
+              data-en="The Starter package is delivered in 1 to 2 weeks. Business in 3 to 5 weeks. Enterprise projects depend on complexity — we establish a detailed timeline on signature."
+            >
+              Le package Starter est livré en 1 à 2 semaines. Le Business en 3 à
+              5 semaines. Les projets Enterprise dépendent de la complexité —
+              nous établissons un planning détaillé à la signature.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span
+                data-fr="Quelle est la différence entre Odoo Community et Enterprise ?"
+                data-en="What's the difference between Odoo Community and Enterprise?"
+                >Quelle est la différence entre Odoo Community et Enterprise
+                ?</span
+              ><span class="faq-toggle">+</span>
+            </div>
+            <div
+              class="faq-a"
+              data-fr="Odoo Community est 100% gratuit et open source. Enterprise ajoute des modules avancés (comptabilité, signature électronique...) avec un abonnement annuel. Pour la majorité des PME, Community est suffisant. On vous conseille lors du premier échange."
+              data-en="Odoo Community is 100% free and open source. Enterprise adds advanced modules (accounting, e-signature...) with an annual subscription. For most SMEs, Community is sufficient. We advise you during the first consultation."
+            >
+              Odoo Community est 100% gratuit et open source. Enterprise ajoute
+              des modules avancés avec un abonnement annuel. Pour la majorité
+              des PME, Community est suffisant.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      renderNav("Contact");
+      renderFooter();
+      function toggleFaq(el) {
+        el.parentElement.classList.toggle("open");
+      }
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const btn = this.querySelector("button[type=submit]");
+          btn.textContent = "⏳ Envoi en cours...";
+          btn.disabled = true;
+          fetch(this.action, {
+            method: "POST",
+            body: new FormData(this),
+            headers: { Accept: "application/json" },
+          })
+            .then((r) => {
+              if (r.ok) {
+                document.getElementById("formSuccess").classList.add("show");
+                this.reset();
+              } else {
+                alert(
+                  "Erreur lors de l'envoi. Réessayez ou écrivez directement par email.",
+                );
+              }
+            })
+            .catch(() => alert("Erreur réseau. Réessayez."))
+            .finally(() => {
+              btn.textContent = "Envoyer le message →";
+              btn.disabled = false;
+            });
+        });
+    </script>
+  </body>
+</html>

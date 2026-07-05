@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevoriaTech — Bâtir le digital qui dure</title>
+    <meta
+      name="description"
+      content="DevoriaTech — Solutions digitales ERP, CRM Odoo, sites web et applications pour PME et startups en Afrique."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* ── PAGE-SPECIFIC ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 120px 5% 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 70% 50%,
+            rgba(24, 95, 165, 0.07) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 20% 80%,
+            rgba(15, 110, 86, 0.06) 0%,
+            transparent 60%
+          );
+      }
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        opacity: 0.03;
+        background-image:
+          linear-gradient(var(--charcoal) 1px, transparent 1px),
+          linear-gradient(90deg, var(--charcoal) 1px, transparent 1px);
+        background-size: 48px 48px;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--blue-light);
+        color: var(--blue-dark);
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        padding: 6px 14px;
+        border-radius: 999px;
+        margin-bottom: 1.5rem;
+        animation: fadeUp 0.6s ease both;
+      }
+      .hero-eyebrow span.dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--blue);
+        display: inline-block;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        font-weight: 800;
+        line-height: 1.1;
+        color: var(--charcoal);
+        margin-bottom: 1.5rem;
+        animation: fadeUp 0.6s 0.1s ease both;
+      }
+      .hero h1 .accent {
+        color: var(--blue);
+      }
+      .hero-desc {
+        font-size: 1.05rem;
+        color: var(--charcoal-mid);
+        line-height: 1.75;
+        max-width: 560px;
+        margin-bottom: 2.5rem;
+        animation: fadeUp 0.6s 0.2s ease both;
+        font-weight: 300;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        animation: fadeUp 0.6s 0.3s ease both;
+      }
+      .hero-visual {
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 420px;
+        z-index: 1;
+        animation: fadeUp 0.8s 0.4s ease both;
+      }
+
+      .services-section {
+        background: var(--off-white);
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.25rem;
+      }
+      .service-card {
+        position: relative;
+        overflow: hidden;
+      }
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--blue);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform var(--transition);
+      }
+      .service-card:hover::before {
+        transform: scaleX(1);
+      }
+      .service-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+      }
+      .service-card h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--charcoal);
+        margin-bottom: 0.6rem;
+      }
+      .service-card p {
+        font-size: 0.9rem;
+        color: var(--charcoal-mid);
+        line-height: 1.65;
+        font-weight: 300;
+      }
+      .service-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--blue);
+        margin-top: 1.25rem;
+        transition: gap var(--transition);
+      }
+      .service-link:hover {
+        gap: 10px;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .why-points {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+      }
+      .why-point {
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
+      }
+      .why-num {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--blue-light);
+        line-height: 1;
+        flex-shrink: 0;
+        width: 40px;
+        letter-spacing: -0.04em;
+      }
+      .why-point h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--charcoal);
+        margin-bottom: 4px;
+      }
+      .why-point p {
+        font-size: 0.9rem;
+        color: var(--charcoal-mid);
+        line-height: 1.65;
+        font-weight: 300;
+      }
+      .why-visual {
+        background: var(--charcoal);
+        border-radius: 20px;
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .why-visual::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: var(--blue);
+        opacity: 0.15;
+        bottom: -60px;
+        right: -60px;
+      }
+      .why-quote {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--white);
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+      .why-quote::before {
+        content: '"';
+        color: var(--blue);
+        font-size: 3rem;
+        display: block;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+      .why-geo {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+      .geo-pill {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.8rem;
+        padding: 6px 14px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .geo-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+      }
+
+      .process-section {
+        background: var(--off-white);
+      }
+      .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0;
+      }
+      .process-step {
+        padding: 2rem 1.5rem;
+        text-align: center;
+        position: relative;
+      }
+      .process-step:not(:last-child)::after {
+        content: "→";
+        position: absolute;
+        right: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--blue);
+        font-size: 1.2rem;
+      }
+      .step-num {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--blue);
+        color: var(--white);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+      }
+      .process-step h4 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--charcoal);
+        margin-bottom: 6px;
+      }
+      .process-step p {
+        font-size: 0.82rem;
+        color: var(--charcoal-mid);
+        line-height: 1.6;
+        font-weight: 300;
+      }
+
+      @media (max-width: 900px) {
+        .hero-visual {
+          display: none;
+        }
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+        .process-step:not(:last-child)::after {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <span
+            data-fr="Maroc &amp; Côte d'Ivoire · Afrique"
+            data-en="Morocco &amp; Côte d'Ivoire · Africa"
+            >Maroc &amp; Côte d'Ivoire · Afrique</span
+          >
+        </div>
+        <h1>
+          <span
+            data-fr="Bâtir le digital<br><span class='accent'>qui dure.</span>"
+            data-en="Building digital<br><span class='accent'>that lasts.</span>"
+            >Bâtir le digital<br /><span class="accent">qui dure.</span></span
+          >
+        </h1>
+        <p
+          class="hero-desc"
+          data-fr="DevoriaTech accompagne les PME et startups d'Afrique dans leur transformation digitale — ERP Odoo, sites web, applications mobiles et automatisation IA."
+          data-en="DevoriaTech supports SMEs and startups across Francophone Africa in their digital transformation — Odoo ERP, websites, mobile apps, and AI automation."
+        >
+          DevoriaTech accompagne les PME et startups d'Afrique dans
+          leur transformation digitale — ERP Odoo, sites web, applications
+          mobiles et automatisation IA.
+        </p>
+        <div class="hero-actions">
+          <a
+            href="pages/contact.html"
+            class="btn-primary"
+            data-fr="Demander un devis gratuit →"
+            data-en="Request a free quote →"
+            >Demander un devis gratuit →</a
+          >
+          <a
+            href="pages/services.html"
+            class="btn-secondary"
+            data-fr="Voir nos services"
+            data-en="See our services"
+            >Voir nos services</a
+          >
+        </div>
+      </div>
+      <!-- Banner Image -->
+      <div class="hero-visual">
+        <img
+          src="media/bannière.png"
+          alt="DevoriaTech Banner"
+          style="
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 24px 48px rgba(24, 95, 165, 0.18);
+          "
+        />
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <span class="stat-num">5<span class="unit">+</span></span
+          ><span
+            class="stat-label"
+            data-fr="Services digitaux"
+            data-en="Digital services"
+            >Services digitaux</span
+          >
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2</span
+          ><span
+            class="stat-label"
+            data-fr="Pays couverts"
+            data-en="Countries covered"
+            >Pays couverts</span
+          >
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">50<span class="unit">%</span></span
+          ><span
+            class="stat-label"
+            data-fr="Acompte à la signature"
+            data-en="Deposit on signature"
+            >Acompte à la signature</span
+          >
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">24<span class="unit">h</span></span
+          ><span
+            class="stat-label"
+            data-fr="Réponse garantie"
+            data-en="Response guaranteed"
+            >Réponse garantie</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <span
+            class="section-tag"
+            data-fr="Ce que nous faisons"
+            data-en="What we do"
+            >Ce que nous faisons</span
+          >
+          <h2
+            class="section-title"
+            data-fr="Des solutions digitales complètes"
+            data-en="Complete digital solutions"
+          >
+            Des solutions digitales complètes
+          </h2>
+          <p
+            class="section-sub"
+            data-fr="De l'ERP à l'application mobile, nous couvrons tous les besoins digitaux des entreprises africaines."
+            data-en="From ERP to mobile apps, we cover every digital need for African businesses."
+          >
+            De l'ERP à l'application mobile, nous couvrons tous les besoins
+            digitaux des entreprises africaines.
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="card service-card reveal">
+            <div class="service-icon" style="background: var(--blue-light)">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <rect
+                  x="3"
+                  y="3"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  stroke="#185FA5"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="14"
+                  y="3"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  stroke="#185FA5"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="3"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  stroke="#185FA5"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="14"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  stroke="#185FA5"
+                  stroke-width="1.8"
+                />
+              </svg>
+            </div>
+            <h3
+              data-fr="Implémentation Odoo ERP/CRM"
+              data-en="Odoo ERP/CRM Implementation"
+            >
+              Implémentation Odoo ERP/CRM
+            </h3>
+            <p
+              data-fr="Déploiement complet d'Odoo pour gérer vos ventes, achats, stock et relation client — paramétré selon votre activité."
+              data-en="Full Odoo deployment to manage your sales, purchases, inventory and customer relations."
+            >
+              Déploiement complet d'Odoo pour gérer vos ventes, achats, stock et
+              relation client — paramétré selon votre activité.
+            </p>
+            <a
+              href="pages/services.html"
+              class="service-link"
+              data-fr="Voir les packages →"
+              data-en="See packages →"
+              >Voir les packages →</a
+            >
+          </div>
+          <div class="card service-card reveal">
+            <div class="service-icon" style="background: var(--green-light)">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <rect
+                  x="3"
+                  y="4"
+                  width="18"
+                  height="14"
+                  rx="2"
+                  stroke="#0F6E56"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M8 20h8M12 18v2"
+                  stroke="#0F6E56"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3 data-fr="Création de sites web" data-en="Website Creation">
+              Création de sites web
+            </h3>
+            <p
+              data-fr="Sites vitrines, e-commerce ou plateformes sur mesure — design moderne, responsive et optimisé pour convertir."
+              data-en="Showcase sites, e-commerce, or custom platforms — modern responsive design optimized to convert."
+            >
+              Sites vitrines, e-commerce ou plateformes sur mesure — design
+              moderne, responsive et optimisé pour convertir.
+            </p>
+            <a
+              href="pages/services.html"
+              class="service-link"
+              data-fr="En savoir plus →"
+              data-en="Learn more →"
+              >En savoir plus →</a
+            >
+          </div>
+          <div class="card service-card reveal">
+            <div class="service-icon" style="background: #eeedfe">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <rect
+                  x="7"
+                  y="2"
+                  width="10"
+                  height="20"
+                  rx="2"
+                  stroke="#534AB7"
+                  stroke-width="1.8"
+                />
+                <circle cx="12" cy="18" r="1" fill="#534AB7" />
+              </svg>
+            </div>
+            <h3 data-fr="Applications mobiles" data-en="Mobile Applications">
+              Applications mobiles
+            </h3>
+            <p
+              data-fr="Applications iOS et Android pour digitaliser vos opérations terrain en temps réel."
+              data-en="iOS and Android applications to digitalize your field operations in real time."
+            >
+              Applications iOS et Android pour digitaliser vos opérations
+              terrain en temps réel.
+            </p>
+            <a
+              href="pages/services.html"
+              class="service-link"
+              data-fr="Discutons →"
+              data-en="Let's talk →"
+              >Discutons →</a
+            >
+          </div>
+          <div class="card service-card reveal">
+            <div class="service-icon" style="background: var(--green-light)">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path
+                  d="M12 2L2 7l10 5 10-5-10-5z"
+                  stroke="#0F6E56"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M2 17l10 5 10-5M2 12l10 5 10-5"
+                  stroke="#0F6E56"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3
+              data-fr="Formation & accompagnement"
+              data-en="Training & Support"
+            >
+              Formation & accompagnement
+            </h3>
+            <p
+              data-fr="Formation de vos équipes sur Odoo et vos outils digitaux avec support continu."
+              data-en="Training your teams on Odoo and digital tools with ongoing support."
+            >
+              Formation de vos équipes sur Odoo et vos outils digitaux avec
+              support continu.
+            </p>
+            <a
+              href="pages/services.html"
+              class="service-link"
+              data-fr="Planifier →"
+              data-en="Schedule →"
+              >Planifier →</a
+            >
+          </div>
+          <div class="card service-card reveal">
+            <div class="service-icon" style="background: #faeeda">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="3"
+                  stroke="#854F0B"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"
+                  stroke="#854F0B"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3 data-fr="Automatisation & IA" data-en="Automation & AI">
+              Automatisation & IA
+            </h3>
+            <p
+              data-fr="Automatisation de vos processus et intégration IA pour gagner en productivité."
+              data-en="Process automation and AI integration to boost your productivity."
+            >
+              Automatisation de vos processus et intégration IA pour gagner en
+              productivité.
+            </p>
+            <a
+              href="pages/services.html"
+              class="service-link"
+              data-fr="Découvrir →"
+              data-en="Explore →"
+              >Découvrir →</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POURQUOI -->
+    <section>
+      <div class="container">
+        <div class="why-grid">
+          <div>
+            <span
+              class="section-tag"
+              data-fr="Pourquoi nous choisir"
+              data-en="Why choose us"
+              >Pourquoi nous choisir</span
+            >
+            <h2
+              class="section-title"
+              data-fr="L'expertise technique au service de votre croissance"
+              data-en="Technical expertise at the service of your growth"
+            >
+              L'expertise technique au service de votre croissance
+            </h2>
+            <div class="why-points" style="margin-top: 2rem">
+              <div class="why-point reveal">
+                <span class="why-num">01</span>
+                <div>
+                  <h4
+                    data-fr="Expertise Odoo solide"
+                    data-en="Solid Odoo expertise"
+                  >
+                    Expertise Odoo solide
+                  </h4>
+                  <p
+                    data-fr="Spécialisés Odoo Community et Enterprise, avec expérience en intégration IoT et IA."
+                    data-en="Specialized in Odoo Community and Enterprise, with IoT and AI integration experience."
+                  >
+                    Spécialisés Odoo Community et Enterprise, avec expérience en
+                    intégration IoT et IA.
+                  </p>
+                </div>
+              </div>
+              <div class="why-point reveal">
+                <span class="why-num">02</span>
+                <div>
+                  <h4
+                    data-fr="Tarifs adaptés au marché africain"
+                    data-en="Prices adapted to the African market"
+                  >
+                    Tarifs adaptés au marché africain
+                  </h4>
+                  <p
+                    data-fr="Expertise équivalente aux intégrateurs européens, à des prix accessibles aux PME africaines."
+                    data-en="Equivalent expertise to European integrators, at prices accessible to African SMEs."
+                  >
+                    Expertise équivalente aux intégrateurs européens, à des prix
+                    accessibles aux PME africaines.
+                  </p>
+                </div>
+              </div>
+              <div class="why-point reveal">
+                <span class="why-num">03</span>
+                <div>
+                  <h4
+                    data-fr="Accompagnement humain de bout en bout"
+                    data-en="Human support from start to finish"
+                  >
+                    Accompagnement humain de bout en bout
+                  </h4>
+                  <p
+                    data-fr="Formation, support et évolutions après livraison — parce que votre succès est le nôtre."
+                    data-en="Training, support and updates after delivery — because your success is ours."
+                  >
+                    Formation, support et évolutions après livraison — parce que
+                    votre succès est le nôtre.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="why-visual reveal">
+            <p
+              class="why-quote"
+              data-fr="La digitalisation n'est pas un luxe réservé aux grandes entreprises."
+              data-en="Digitalization is not a luxury reserved for large companies."
+            >
+              La digitalisation n'est pas un luxe réservé aux grandes
+              entreprises.
+            </p>
+            <div class="why-geo">
+              <div class="geo-pill">
+                <div class="geo-dot" style="background: #c01d27"></div>
+                Maroc
+              </div>
+              <div class="geo-pill">
+                <div class="geo-dot" style="background: #f77f00"></div>
+                Côte d'Ivoire
+              </div>
+              <div class="geo-pill">
+                <div class="geo-dot" style="background: #185fa5"></div>
+                <span data-fr="Afrique" data-en="Africa"
+                  >Afrique</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESSUS -->
+    <section class="process-section">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag" data-fr="Notre méthode" data-en="Our method"
+            >Notre méthode</span
+          >
+          <h2
+            class="section-title"
+            data-fr="Un projet, 4 étapes"
+            data-en="One project, 4 steps"
+          >
+            Un projet, 4 étapes
+          </h2>
+        </div>
+        <div class="process-steps">
+          <div class="process-step reveal">
+            <div class="step-num">1</div>
+            <h4 data-fr="Analyse" data-en="Analysis">Analyse</h4>
+            <p
+              data-fr="Étude de vos besoins et objectifs métier"
+              data-en="Study of your business needs and objectives"
+            >
+              Étude de vos besoins et objectifs métier
+            </p>
+          </div>
+          <div class="process-step reveal">
+            <div class="step-num">2</div>
+            <h4 data-fr="Proposition" data-en="Proposal">Proposition</h4>
+            <p
+              data-fr="Devis détaillé et planning de livraison"
+              data-en="Detailed quote and delivery schedule"
+            >
+              Devis détaillé et planning de livraison
+            </p>
+          </div>
+          <div class="process-step reveal">
+            <div class="step-num">3</div>
+            <h4 data-fr="Déploiement" data-en="Deployment">Déploiement</h4>
+            <p
+              data-fr="Développement, tests et mise en production"
+              data-en="Development, testing and go-live"
+            >
+              Développement, tests et mise en production
+            </p>
+          </div>
+          <div class="process-step reveal">
+            <div class="step-num">4</div>
+            <h4 data-fr="Accompagnement" data-en="Support">Accompagnement</h4>
+            <p
+              data-fr="Formation équipe et support continu"
+              data-en="Team training and ongoing support"
+            >
+              Formation équipe et support continu
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <span
+          class="section-tag"
+          data-fr="Prêt à vous lancer ?"
+          data-en="Ready to get started?"
+          >Prêt à vous lancer ?</span
+        >
+        <h2
+          class="section-title"
+          data-fr="Parlons de votre projet"
+          data-en="Let's talk about your project"
+        >
+          Parlons de votre projet
+        </h2>
+        <p
+          class="section-sub"
+          data-fr="Réponse garantie sous 24h. Premier échange gratuit et sans engagement."
+          data-en="Response guaranteed within 24h. First consultation free and with no commitment."
+        >
+          Réponse garantie sous 24h. Premier échange gratuit et sans engagement.
+        </p>
+        <div class="cta-actions">
+          <a
+            href="pages/contact.html"
+            class="btn-white"
+            data-fr="Envoyer un message →"
+            data-en="Send a message →"
+            >Envoyer un message →</a
+          >
+          <a
+            href="https://wa.me/VOTRE_NUMERO"
+            class="btn-whatsapp"
+            target="_blank"
+            data-fr="WhatsApp"
+            data-en="WhatsApp"
+          >
+            <svg
+              width="18"
+              height="18"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              style="
+                display: inline-block;
+                margin-right: 6px;
+                vertical-align: middle;
+              "
+            >
+              <path
+                d="M20.1 3.9C18.9 2.7 17.5 2 16 2c-1.3 0-2.5.4-3.6 1.3-1.1-.9-2.4-1.3-3.6-1.3-4.5 0-8 3.5-8 8 0 1.4.4 2.8 1.3 3.6l-.3 3.7 3.7-.3c.8.9 2.2 1.4 3.6 1.4 4.5 0 8-3.5 8-8 0-1.3-.4-2.5-1.3-3.6zm-7.9 13.5c-1.1 0-2.1-.3-3-.9l-.2-.1-2.3.2.2-2.3-.1-.2c-.6-.9-.9-1.9-.9-3 0-3.3 2.7-6 6-6 3.3 0 6 2.7 6 6 0 3.3-2.7 6-6 6z"
+              />
+              </svg>WhatsApp</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      renderNav();
+      renderFooter();
+    </script>
+  </body>
+</html>
