@@ -1,0 +1,109 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  items: readonly { q: string; a: string }[];
+}
+const { items } = Astro.props;
+---
+
+<div class="dt-faq">
+  {
+    items.map((item, i) => (
+      <div class="dt-faq__item" data-reveal style={`--reveal-delay:${i * 50}ms`}>
+        <button
+          type="button"
+          class="dt-faq__q"
+          aria-expanded="false"
+          aria-controls={`faq-a-${i}`}
+          id={`faq-q-${i}`}
+        >
+          <span>{item.q}</span>
+          <span class="dt-faq__toggle" aria-hidden="true">
+            <Icon name="plus" size={20} />
+          </span>
+        </button>
+        <div class="dt-faq__panel" id={`faq-a-${i}`} role="region" aria-labelledby={`faq-q-${i}`}>
+          <div class="dt-faq__inner">
+            <p>{item.a}</p>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .dt-faq {
+    max-width: 44rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .dt-faq__item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s var(--ease-smooth);
+  }
+  .dt-faq__item.is-open {
+    border-color: var(--color-border-strong);
+  }
+  .dt-faq__q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.15rem 1.35rem;
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .dt-faq__q:hover {
+    color: var(--color-accent);
+  }
+  .dt-faq__toggle {
+    display: inline-flex;
+    color: var(--color-text-muted);
+    transition: transform 0.25s var(--ease-smooth);
+    flex-shrink: 0;
+  }
+  .dt-faq__item.is-open .dt-faq__toggle {
+    transform: rotate(45deg);
+    color: var(--color-accent);
+  }
+  .dt-faq__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s var(--ease-smooth);
+  }
+  .dt-faq__item.is-open .dt-faq__panel {
+    grid-template-rows: 1fr;
+  }
+  .dt-faq__inner {
+    overflow: hidden;
+  }
+  .dt-faq__inner p {
+    padding: 0 1.35rem 1.3rem;
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.dt-faq__q').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.dt-faq__item');
+      if (!item) return;
+      const open = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+</script>

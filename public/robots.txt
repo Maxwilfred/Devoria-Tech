@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://devoriatech.com/sitemap-index.xml

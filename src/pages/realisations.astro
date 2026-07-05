@@ -1,0 +1,496 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import CtaSection from '../components/CtaSection.astro';
+import Icon from '../components/Icon.astro';
+import { projects, projectFilters } from '../data/site';
+
+const caseTags = ['Odoo Community', 'Python', 'IoT', 'Intelligence Artificielle', 'API REST'];
+---
+
+<BaseLayout
+  title="Réalisations"
+  description="Découvrez les projets DevoriaTech : déploiements Odoo, intégrations IoT et IA, sites web et applications pour PME et startups d’Afrique."
+  path="/realisations"
+>
+  <PageHero
+    eyebrow="Ce que nous avons construit"
+    title="Nos réalisations"
+    sub="De notre projet de fin d’études aux premières réalisations clients — chaque projet est une démonstration de notre expertise."
+  />
+
+  <!-- ÉTUDE DE CAS -->
+  <Section eyebrow="Étude de cas principale" title="Odoo Community + IoT + IA">
+    <article class="case" data-reveal>
+      <span class="case__glow" aria-hidden="true"></span>
+      <div class="case__header">
+        <span class="case__badge"><Icon name="school" size={26} /></span>
+        <div>
+          <h3>Plateforme Odoo avec communauté en ligne, IoT et IA</h3>
+          <p class="case__meta">Master Management Digital · 2024–2025 · Maroc</p>
+          <div class="case__tags">
+            {caseTags.map((t) => <span class="case__tag">{t}</span>)}
+          </div>
+        </div>
+      </div>
+      <div class="case__grid">
+        <div class="case__block">
+          <h4>Le problème</h4>
+          <p>
+            Les PME utilisent des outils digitaux disparates et non connectés, sans
+            visibilité globale sur leur activité.
+          </p>
+        </div>
+        <div class="case__block">
+          <h4>La solution apportée</h4>
+          <p>
+            Odoo Community enrichi d’un module de communauté en ligne, d’une intégration
+            IoT temps réel et de fonctionnalités IA pour la recommandation et l’analyse.
+          </p>
+        </div>
+        <div class="case__block">
+          <h4>Les résultats</h4>
+          <p>
+            Plateforme fonctionnelle prouvant la faisabilité d’un ERP enrichi d’IoT et
+            d’IA pour les PME africaines, à coût maîtrisé.
+          </p>
+        </div>
+      </div>
+    </article>
+  </Section>
+
+  <!-- AUTRES PROJETS -->
+  <Section surface eyebrow="Autres projets" title="Projets académiques & personnels">
+    <div class="filters" role="group" aria-label="Filtrer les projets">
+      {
+        projectFilters.map((f, i) => (
+          <button
+            type="button"
+            class:list={['filter', { 'is-active': i === 0 }]}
+            data-filter={f.id}
+            aria-pressed={i === 0 ? 'true' : 'false'}
+          >
+            {f.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="projects" id="projectsGrid">
+      {
+        projects.map((p, i) => (
+          <article
+            class="project"
+            data-category={p.category}
+            data-reveal
+            style={`--reveal-delay:${(i % 3) * 60}ms`}
+          >
+            <div class="project__thumb">
+              <Icon name={p.icon} size={34} class="project__thumb-icon" />
+              <span class="project__label">{p.label}</span>
+            </div>
+            <div class="project__body">
+              <div class="project__tags">
+                {p.tags.map((t) => (
+                  <span class="project__tag">{t}</span>
+                ))}
+              </div>
+              <h3>{p.title}</h3>
+              <p class="project__context">{p.context}</p>
+              <div class="project__meta">
+                <span><Icon name="tool" size={15} /> {p.stack}</span>
+                <span><Icon name="clock" size={15} /> {p.year}</span>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="coming" data-reveal>
+      <span class="coming__icon"><Icon name="folder" size={26} /></span>
+      <h3>Vos projets bientôt ici</h3>
+      <p>
+        Nous démarrons avec des clients dès 2025. Chaque projet réussi sera documenté ici
+        comme étude de cas, avec l’accord de nos clients.
+      </p>
+      <a href="/contact" class="btn btn-primary">
+        Devenez notre premier client <Icon name="arrow-right" size={18} />
+      </a>
+    </div>
+  </Section>
+
+  <!-- TÉMOIGNAGES -->
+  <Section eyebrow="Ce qu’on dira bientôt de nous" title="Témoignages clients" centered>
+    <div class="testis">
+      <article class="testi" data-reveal>
+        <Icon name="quote" size={26} class="testi__q" />
+        <p>Témoignage à venir — rejoignez nos premiers clients et partagez votre expérience DevoriaTech.</p>
+        <div class="testi__author">
+          <span class="testi__avatar">?</span>
+          <div>
+            <span class="testi__name">Prochain client</span>
+            <span class="testi__role">Maroc ou Côte d’Ivoire</span>
+          </div>
+        </div>
+      </article>
+      <article class="testi" data-reveal style="--reveal-delay:90ms">
+        <Icon name="quote" size={26} class="testi__q" />
+        <p>Vous aussi, faites partie de l’aventure DevoriaTech. Contactez-nous pour votre projet de digitalisation.</p>
+        <div class="testi__author">
+          <span class="testi__avatar testi__avatar--green">?</span>
+          <div>
+            <span class="testi__name">Futur partenaire</span>
+            <span class="testi__role">Afrique</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </Section>
+
+  <CtaSection
+    title="Votre projet sera notre prochaine réalisation."
+    sub="Premier échange gratuit. On étudie votre besoin et on vous propose une solution."
+  />
+</BaseLayout>
+
+<style>
+  /* Étude de cas */
+  .case {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.8rem, 4vw, 3rem);
+    box-shadow: var(--shadow-md);
+  }
+  .case__glow {
+    position: absolute;
+    inset: -50% -20% auto auto;
+    width: 340px;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--glow-accent), transparent 65%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .case__header {
+    display: flex;
+    gap: 1.3rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .case__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-lg);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+  .case__header h3 {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    margin-bottom: 0.4rem;
+  }
+  .case__meta {
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 0.9rem;
+  }
+  .case__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .case__tag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+  .case__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    position: relative;
+  }
+  .case__block {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.3rem;
+  }
+  .case__block h4 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: 0.6rem;
+  }
+  .case__block p {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  /* Filtres */
+  .filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .filter {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    min-height: 40px;
+    transition: all 0.2s var(--ease-smooth);
+  }
+  .filter:hover {
+    color: var(--color-text);
+    border-color: var(--color-border-strong);
+  }
+  .filter.is-active {
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+    border-color: var(--color-accent);
+  }
+
+  /* Projets */
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .project {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition:
+      transform 0.25s var(--ease-smooth),
+      border-color 0.25s var(--ease-smooth),
+      box-shadow 0.25s var(--ease-smooth);
+  }
+  .project:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-lg);
+  }
+  .project__thumb {
+    position: relative;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(circle at 50% 40%, var(--color-accent-soft), transparent 70%),
+      var(--color-surface-2);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .project :global(.project__thumb-icon) {
+    color: var(--color-accent);
+  }
+  .project__label {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+  .project__body {
+    padding: 1.4rem;
+  }
+  .project__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .project__tag {
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+  .project__body h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .project__context {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .project__meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .project__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.76rem;
+    color: var(--color-text-muted);
+  }
+  .project__meta :global(svg) {
+    color: var(--color-accent);
+  }
+
+  /* Coming soon */
+  .coming {
+    margin-top: 2rem;
+    border: 1.5px dashed var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    padding: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+  }
+  .coming__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .coming h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  .coming p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 34rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  /* Témoignages */
+  .testis {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 52rem;
+    margin-inline: auto;
+  }
+  .testi {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: left;
+    opacity: 0.85;
+  }
+  .testi :global(.testi__q) {
+    color: var(--color-accent);
+    opacity: 0.5;
+    margin-bottom: 0.8rem;
+  }
+  .testi p {
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+  .testi__author {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .testi__avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-brand-blue);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .testi__avatar--green {
+    background: var(--color-brand-green);
+  }
+  .testi__name {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+  .testi__role {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+  }
+
+  .project.is-hidden {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .projects {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .case__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .testis {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 960px) {
+    .projects {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>('.filter');
+  const cards = document.querySelectorAll<HTMLElement>('.project');
+  filters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filters.forEach((b) => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-pressed', 'true');
+      const cat = btn.dataset.filter;
+      cards.forEach((card) => {
+        const show = cat === 'all' || card.dataset.category === cat;
+        card.classList.toggle('is-hidden', !show);
+      });
+    });
+  });
+</script>

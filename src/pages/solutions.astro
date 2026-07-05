@@ -1,0 +1,524 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import CtaSection from '../components/CtaSection.astro';
+import Icon from '../components/Icon.astro';
+import Counter from '../components/Counter.astro';
+import { odooStats, odooModules, odooProcess, odooCompare, iotAi } from '../data/site';
+---
+
+<BaseLayout
+  title="Solutions Odoo ERP"
+  description="Odoo est l’ERP open source le plus utilisé au monde. DevoriaTech le déploie, le configure et forme vos équipes — pour les PME d’Afrique."
+  path="/solutions"
+>
+  <PageHero
+    eyebrow="Notre spécialité"
+    title="Solutions Odoo ERP"
+    sub="Odoo est l’ERP open source le plus utilisé au monde. Nous le déployons, le configurons et formons vos équipes pour les PME d’Afrique francophone."
+  />
+
+  <!-- INTRO ODOO -->
+  <Section>
+    <div class="odoo-intro">
+      <div class="odoo-intro__text" data-reveal>
+        <span class="eyebrow"><span class="dot"></span>Partenaire Odoo indépendant</span>
+        <h2 class="odoo-intro__title">C’est quoi Odoo ?</h2>
+        <p>
+          Odoo est une suite d’applications business open source qui couvre tous les
+          besoins de votre entreprise : ventes, achats, stock, comptabilité, CRM, RH,
+          et bien plus — le tout dans une interface unique et intégrée.
+        </p>
+        <p>
+          Utilisé par plus de 7 millions d’utilisateurs dans 150 pays, Odoo est la
+          solution ERP la plus populaire pour les PME — puissante comme SAP, accessible
+          comme une startup.
+        </p>
+        <a href="/contact" class="btn btn-primary">
+          Déployer Odoo pour mon entreprise <Icon name="arrow-right" size={18} />
+        </a>
+      </div>
+
+      <aside class="odoo-card" data-reveal style="--reveal-delay:100ms">
+        <span class="odoo-card__glow" aria-hidden="true"></span>
+        <h3>Odoo en chiffres</h3>
+        <p>Une solution mondiale, déployée par DevoriaTech pour l’Afrique francophone.</p>
+        <div class="odoo-card__stats">
+          {
+            odooStats.map((s) => (
+              <div class="odoo-stat">
+                <span class="odoo-stat__num">
+                  <Counter value={s.value} suffix={s.suffix} />
+                </span>
+                <span class="odoo-stat__label">{s.label}</span>
+              </div>
+            ))
+          }
+        </div>
+      </aside>
+    </div>
+  </Section>
+
+  <!-- MODULES -->
+  <Section
+    surface
+    eyebrow="Les modules disponibles"
+    title="Tout ce dont votre entreprise a besoin"
+    sub="Nous déployons les modules les plus demandés par les PME africaines. Vous ne payez que pour ce dont vous avez besoin."
+  >
+    <div class="modules">
+      {
+        odooModules.map((m, i) => (
+          <article class="module" data-reveal style={`--reveal-delay:${(i % 3) * 60}ms`}>
+            <span class="module__icon">
+              <Icon name={m.icon} size={22} />
+            </span>
+            <div class="module__head">
+              <h3>{m.name}</h3>
+              {m.tag && <span class="module__tag">{m.tag}</span>}
+            </div>
+            <p>{m.desc}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- PROCESSUS -->
+  <Section
+    eyebrow="Comment on travaille"
+    title="Notre processus d’implémentation"
+    centered
+  >
+    <ol class="timeline">
+      {
+        odooProcess.map((step) => (
+          <li class="timeline__row" data-reveal>
+            <span class="timeline__circle">{step.num}</span>
+            <div class="timeline__content">
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+              <span class="timeline__duration">{step.duration}</span>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <!-- COMPARATIF -->
+  <Section
+    surface
+    eyebrow="Quelle version choisir ?"
+    title="Community vs Enterprise"
+    sub="Pour la majorité des PME africaines, Odoo Community est largement suffisant."
+    centered
+  >
+    <div class="compare" data-reveal>
+      <div class="compare__head">
+        <span>Fonctionnalité</span>
+        <span class="compare__c">Community</span>
+        <span class="compare__e">Enterprise</span>
+      </div>
+      {
+        odooCompare.map((row) => (
+          <div class="compare__row">
+            <span class="compare__feature">{row.feature}</span>
+            <span class="compare__cell">
+              {row.community === true ? (
+                <Icon name="check" size={18} class="compare__yes" />
+              ) : row.community === 'partial' ? (
+                <span class="compare__partial">Basique</span>
+              ) : typeof row.community === 'string' ? (
+                <span class:list={['compare__txt', { 'is-free': 'communityFree' in row && row.communityFree }]}>
+                  {row.community}
+                </span>
+              ) : (
+                <span class="compare__no">—</span>
+              )}
+            </span>
+            <span class="compare__cell">
+              {row.enterprise === true ? (
+                <Icon name="check" size={18} class="compare__yes" />
+              ) : (
+                <span class="compare__txt">{row.enterprise}</span>
+              )}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+    <p class="compare__note">
+      Vous ne savez pas quelle version choisir ?
+      <a href="/contact">On vous conseille gratuitement →</a>
+    </p>
+  </Section>
+
+  <!-- IOT & IA -->
+  <Section
+    eyebrow="Aller plus loin"
+    title="Odoo + IoT & Intelligence Artificielle"
+    sub="Notre expertise dépasse un Odoo standard — avec des intégrations IoT et IA sur mesure."
+    centered
+  >
+    <div class="iotai">
+      {
+        iotAi.map((c, i) => (
+          <article class="iotai__card" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+            <span class="iotai__icon">
+              <Icon name={c.icon} size={24} />
+            </span>
+            <h3>{c.title}</h3>
+            <p>{c.desc}</p>
+            <ul>
+              {c.items.map((it) => (
+                <li>
+                  <Icon name="arrow-right" size={15} />
+                  {it}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <CtaSection
+    eyebrow="Prêt à digitaliser ?"
+    title="Déployons Odoo pour votre entreprise"
+    sub="Premier échange gratuit. Réponse sous 24h. Package Starter dès 800 €."
+  />
+</BaseLayout>
+
+<style>
+  /* Intro */
+  .odoo-intro {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .odoo-intro__title {
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+    margin-block: 1rem;
+  }
+  .odoo-intro__text p {
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    max-width: 46ch;
+  }
+  .odoo-intro__text .btn {
+    margin-top: 0.6rem;
+  }
+  .odoo-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.8rem, 4vw, 2.5rem);
+    box-shadow: var(--shadow-md);
+  }
+  .odoo-card__glow {
+    position: absolute;
+    inset: -40% -30% auto auto;
+    width: 280px;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--glow-accent), transparent 65%);
+    filter: blur(34px);
+    pointer-events: none;
+  }
+  .odoo-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .odoo-card > p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .odoo-card__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+  }
+  .odoo-stat {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.1rem;
+    text-align: center;
+  }
+  .odoo-stat__num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-accent);
+  }
+  .odoo-stat__label {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Modules */
+  .modules {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .module {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition:
+      transform 0.25s var(--ease-smooth),
+      border-color 0.25s var(--ease-smooth);
+  }
+  .module:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-border-strong);
+  }
+  .module__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .module__head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .module__head h3 {
+    font-size: 1.05rem;
+  }
+  .module__tag {
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+  .module p {
+    font-size: 0.86rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* Timeline */
+  .timeline {
+    max-width: 46rem;
+    margin-inline: auto;
+    list-style: none;
+    position: relative;
+  }
+  .timeline__row {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 1.3rem;
+    padding-bottom: 2rem;
+    position: relative;
+  }
+  .timeline__row:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 46px;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-border);
+  }
+  .timeline__circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+    font-family: var(--font-display);
+    font-weight: 700;
+    z-index: 1;
+  }
+  .timeline__content h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+    padding-top: 0.5rem;
+  }
+  .timeline__content p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.6rem;
+  }
+  .timeline__duration {
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 500;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+
+  /* Comparatif */
+  .compare {
+    max-width: 52rem;
+    margin-inline: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+  .compare__head,
+  .compare__row {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr 1fr;
+    align-items: center;
+  }
+  .compare__head {
+    background: var(--color-surface-2);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  .compare__head span {
+    padding: 0.9rem 1rem;
+  }
+  .compare__c {
+    color: var(--color-brand-blue-soft);
+    text-align: center;
+  }
+  .compare__e {
+    color: var(--color-mint);
+    text-align: center;
+  }
+  .compare__row {
+    border-top: 1px solid var(--color-border);
+    font-size: 0.88rem;
+  }
+  .compare__feature {
+    padding: 0.85rem 1rem;
+    color: var(--color-text);
+  }
+  .compare__cell {
+    padding: 0.85rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .compare :global(.compare__yes) {
+    color: var(--color-mint);
+  }
+  .compare__no {
+    color: var(--color-text-faint);
+  }
+  .compare__partial {
+    font-size: 0.75rem;
+    color: #e0a53b;
+  }
+  .compare__txt {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+  .compare__txt.is-free {
+    color: var(--color-mint);
+    font-weight: 500;
+  }
+  .compare__note {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+  .compare__note a {
+    color: var(--color-accent);
+  }
+
+  /* IoT / IA */
+  .iotai {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .iotai__card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+  .iotai__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    margin-bottom: 1.2rem;
+  }
+  .iotai__card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  .iotai__card > p {
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 1.3rem;
+  }
+  .iotai__card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .iotai__card li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    font-size: 0.88rem;
+    color: var(--color-text);
+  }
+  .iotai__card li :global(svg) {
+    color: var(--color-accent);
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 640px) {
+    .modules {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .iotai {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 960px) {
+    .odoo-intro {
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+    }
+    .modules {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

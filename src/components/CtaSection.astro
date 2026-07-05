@@ -1,0 +1,78 @@
+---
+import Icon from './Icon.astro';
+import { WHATSAPP_URL } from '../lib/env';
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  sub?: string;
+}
+const {
+  eyebrow = 'Prêt à vous lancer ?',
+  title = 'Parlons de votre projet',
+  sub = 'Réponse garantie sous 24h. Premier échange gratuit et sans engagement.',
+} = Astro.props;
+---
+
+<section class="dt-cta">
+  <div class="dt-cta__glow" aria-hidden="true"></div>
+  <div class="container-dt dt-cta__inner">
+    <span class="eyebrow" data-reveal><span class="dot"></span>{eyebrow}</span>
+    <h2 class="dt-cta__title" data-reveal style="--reveal-delay:60ms">{title}</h2>
+    <p class="dt-cta__sub" data-reveal style="--reveal-delay:120ms">{sub}</p>
+    <div class="dt-cta__actions" data-reveal style="--reveal-delay:180ms">
+      <a href="/contact" class="btn btn-primary">
+        Envoyer un message <Icon name="arrow-right" size={18} />
+      </a>
+      <a href={WHATSAPP_URL} target="_blank" rel="noopener" class="btn btn-ghost">
+        <Icon name="brand-whatsapp" size={18} /> WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dt-cta {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4rem, 9vw, 7rem);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .dt-cta__glow {
+    position: absolute;
+    inset: auto 50% -60% auto;
+    transform: translateX(50%);
+    width: min(760px, 90%);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--glow-accent) 0%, transparent 62%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .dt-cta__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.1rem;
+  }
+  .dt-cta__title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    letter-spacing: -0.03em;
+    max-width: 18ch;
+  }
+  .dt-cta__sub {
+    color: var(--color-text-muted);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    max-width: 42ch;
+    line-height: 1.7;
+  }
+  .dt-cta__actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.8rem;
+  }
+</style>

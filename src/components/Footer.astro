@@ -1,0 +1,138 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { nav, site } from '../data/site';
+import { WHATSAPP_URL } from '../lib/env';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="dt-footer">
+  <div class="container-dt dt-footer__inner">
+    <div class="dt-footer__brand">
+      <a href="/" aria-label="Accueil DevoriaTech"><Logo /></a>
+      <p class="dt-footer__tag">
+        Solutions digitales pour les entrepreneurs d’Afrique. ERP Odoo, sites web,
+        applications mobiles et automatisation IA.
+      </p>
+      <div class="dt-footer__social">
+        <a href={site.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn">
+          <Icon name="brand-linkedin" size={20} />
+        </a>
+        <a href={`mailto:${site.email}`} aria-label="Email">
+          <Icon name="mail" size={20} />
+        </a>
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener" aria-label="WhatsApp">
+          <Icon name="brand-whatsapp" size={20} />
+        </a>
+      </div>
+    </div>
+
+    <nav class="dt-footer__col" aria-label="Pages">
+      <span class="dt-footer__title">Navigation</span>
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="dt-footer__col">
+      <span class="dt-footer__title">Contact</span>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <span class="dt-footer__muted">Casablanca, Maroc</span>
+      <span class="dt-footer__muted">Abidjan, Côte d’Ivoire</span>
+      <span class="dt-footer__muted">Lun–Sam · 9h–19h (GMT+1)</span>
+    </div>
+  </div>
+
+  <div class="container-dt dt-footer__bottom">
+    <span>© {year} DevoriaTech. Tous droits réservés.</span>
+    <span class="dt-footer__made">Conçu au Maroc, pour l’Afrique.</span>
+  </div>
+</footer>
+
+<style>
+  .dt-footer {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+    padding-block: 4rem 2rem;
+    margin-top: 2rem;
+  }
+  .dt-footer__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .dt-footer__tag {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 34ch;
+    margin-top: 1.1rem;
+  }
+  .dt-footer__social {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+  }
+  .dt-footer__social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    transition: all 0.2s var(--ease-smooth);
+  }
+  .dt-footer__social a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  .dt-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .dt-footer__title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.3rem;
+  }
+  .dt-footer__col a {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    transition: color 0.2s var(--ease-smooth);
+    width: fit-content;
+  }
+  .dt-footer__col a:hover {
+    color: var(--color-accent);
+  }
+  .dt-footer__muted {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+  .dt-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 720px) {
+    .dt-footer__inner {
+      grid-template-columns: 2fr 1fr 1.3fr;
+      gap: 3rem;
+    }
+    .dt-footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+</style>

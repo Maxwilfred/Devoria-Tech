@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { nav } from '../data/site';
+---
+
+<BaseLayout title="Page introuvable — DevoriaTech" description="La page demandée n’existe pas ou a été déplacée." path="/404">
+  <section class="nf">
+    <div class="nf__bg" aria-hidden="true"></div>
+    <div class="container-dt nf__inner">
+      <span class="eyebrow"><span class="dot"></span>Erreur 404</span>
+      <h1 class="nf__code">404</h1>
+      <h2 class="nf__title">Cette page a pris un autre chemin</h2>
+      <p class="nf__sub">
+        La page que vous cherchez n’existe pas ou a été déplacée. Revenons sur la bonne voie.
+      </p>
+      <div class="nf__actions">
+        <a href="/" class="btn btn-primary">
+          <Icon name="arrow-right" size={18} /> Retour à l’accueil
+        </a>
+        <a href="/contact" class="btn btn-ghost">Nous contacter</a>
+      </div>
+      <nav class="nf__links" aria-label="Liens utiles">
+        {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf {
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - 68px);
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .nf__bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(45% 45% at 50% 30%, var(--glow-accent) 0%, transparent 60%),
+      radial-gradient(40% 40% at 20% 80%, rgba(24, 95, 165, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .nf__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 4rem;
+  }
+  .nf__code {
+    font-size: clamp(5rem, 20vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    background: linear-gradient(180deg, var(--color-text), transparent 180%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-top: 0.5rem;
+  }
+  .nf__title {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .nf__sub {
+    color: var(--color-text-muted);
+    max-width: 40ch;
+    line-height: 1.7;
+  }
+  .nf__actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .nf__links {
+    display: flex;
+    gap: 1.3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .nf__links a {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+  }
+  .nf__links a:hover {
+    color: var(--color-accent);
+  }
+</style>

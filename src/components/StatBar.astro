@@ -1,0 +1,70 @@
+---
+import Counter from './Counter.astro';
+
+interface Props {
+  stats: readonly { value: number; suffix: string; label: string }[];
+}
+const { stats } = Astro.props;
+---
+
+<div class="dt-stats">
+  <div class="container-dt dt-stats__grid">
+    {
+      stats.map((s, i) => (
+        <div class="dt-stats__item" data-reveal style={`--reveal-delay:${i * 70}ms`}>
+          <span class="dt-stats__num">
+            <Counter value={s.value} suffix={s.suffix} />
+          </span>
+          <span class="dt-stats__label">{s.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .dt-stats {
+    border-block: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .dt-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+    padding-block: clamp(2rem, 5vw, 3rem);
+  }
+  .dt-stats__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-align: center;
+    position: relative;
+  }
+  .dt-stats__num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 2.9rem);
+    letter-spacing: -0.04em;
+    color: var(--color-text);
+    line-height: 1;
+  }
+  .dt-stats__label {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+  @media (min-width: 720px) {
+    .dt-stats__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .dt-stats__item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 60%;
+      width: 1px;
+      background: var(--color-border);
+    }
+  }
+</style>

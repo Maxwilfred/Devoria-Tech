@@ -1,0 +1,168 @@
+---
+import Icon from './Icon.astro';
+import Terminal from './Terminal.astro';
+---
+
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__mesh"></div>
+    <div class="hero__grid"></div>
+  </div>
+
+  <div class="container-dt hero__inner">
+    <div class="hero__content">
+      <span class="eyebrow hero__eyebrow">
+        <span class="dot"></span>
+        Maroc &amp; Côte d’Ivoire · Afrique
+      </span>
+
+      <h1 class="hero__title">
+        Bâtir le digital
+        <span class="hero__accent">qui dure.</span>
+      </h1>
+
+      <p class="hero__sub">
+        DevoriaTech accompagne les PME et startups d’Afrique dans leur
+        transformation digitale — ERP Odoo, sites web, applications mobiles et
+        automatisation IA.
+      </p>
+
+      <div class="hero__actions">
+        <a href="/contact" class="btn btn-primary">
+          Demander un devis gratuit <Icon name="arrow-right" size={18} />
+        </a>
+        <a href="/services" class="btn btn-ghost">Voir nos services</a>
+      </div>
+
+      <ul class="hero__trust">
+        <li><Icon name="circle-check" size={17} /> Réponse sous 24h</li>
+        <li><Icon name="circle-check" size={17} /> Devis gratuit</li>
+        <li><Icon name="circle-check" size={17} /> Sans engagement</li>
+      </ul>
+    </div>
+
+    <div class="hero__visual">
+      <Terminal />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3rem, 9vw, 6rem) clamp(3rem, 7vw, 5rem);
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero__mesh {
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 130%;
+    background:
+      radial-gradient(42% 42% at 78% 12%, var(--glow-accent) 0%, transparent 60%),
+      radial-gradient(38% 40% at 12% 20%, rgba(24, 95, 165, 0.16) 0%, transparent 60%),
+      radial-gradient(45% 45% at 60% 80%, rgba(15, 110, 86, 0.1) 0%, transparent 65%);
+    filter: blur(10px);
+  }
+  .hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 52px 52px;
+    -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 72%);
+    mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 72%);
+    opacity: 0.5;
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .hero__content > * {
+    opacity: 0;
+    animation: fade-up 0.7s var(--ease-smooth) forwards;
+  }
+  .hero__eyebrow {
+    animation-delay: 0.05s;
+  }
+  .hero__title {
+    font-size: clamp(2.6rem, 8.5vw, 4.4rem);
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    margin-block: 1.4rem 0;
+    animation-delay: 0.13s;
+  }
+  .hero__accent {
+    display: block;
+    color: var(--color-accent);
+  }
+  .hero__sub {
+    color: var(--color-text-muted);
+    font-size: clamp(1.02rem, 2.4vw, 1.2rem);
+    line-height: 1.7;
+    max-width: 34rem;
+    margin-top: 1.4rem;
+    animation-delay: 0.22s;
+  }
+  .hero__actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    animation-delay: 0.31s;
+  }
+  .hero__trust {
+    display: flex;
+    gap: 1.3rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    list-style: none;
+    animation-delay: 0.4s;
+  }
+  .hero__trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  .hero__trust :global(svg) {
+    color: var(--color-accent);
+  }
+  .hero__visual {
+    opacity: 0;
+    animation: fade-up 0.8s var(--ease-smooth) 0.45s forwards;
+    max-width: 34rem;
+    width: 100%;
+    justify-self: center;
+  }
+
+  @media (min-width: 900px) {
+    .hero__inner {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+    .hero__title {
+      margin-top: 1.6rem;
+    }
+    .hero__visual {
+      justify-self: end;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__content > *,
+    .hero__visual {
+      opacity: 1;
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  sub?: string;
+  centered?: boolean;
+  id?: string;
+  class?: string;
+  /** Fond alterné pour créer une variation subtile entre sections */
+  surface?: boolean;
+}
+const {
+  eyebrow,
+  title,
+  sub,
+  centered = false,
+  id,
+  class: className,
+  surface = false,
+} = Astro.props;
+---
+
+<section id={id} class:list={['dt-section', { 'dt-section--surface': surface }, className]}>
+  <div class="container-dt">
+    {
+      (eyebrow || title || sub) && (
+        <header class:list={['dt-section__head', { 'is-centered': centered }]}>
+          {eyebrow && (
+            <span class="eyebrow" data-reveal>
+              <span class="dot" />
+              {eyebrow}
+            </span>
+          )}
+          {title && (
+            <h2 class="dt-section__title" data-reveal style="--reveal-delay:60ms">
+              {title}
+            </h2>
+          )}
+          {sub && (
+            <p class="dt-section__sub" data-reveal style="--reveal-delay:120ms">
+              {sub}
+            </p>
+          )}
+        </header>
+      )
+    }
+    <slot />
+  </div>
+</section>
+
+<style>
+  .dt-section {
+    padding-block: clamp(3.5rem, 8vw, 6.5rem);
+    position: relative;
+  }
+  .dt-section--surface {
+    background: var(--color-surface);
+    border-block: 1px solid var(--color-border);
+  }
+  .dt-section__head {
+    max-width: 44rem;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .dt-section__head.is-centered {
+    margin-inline: auto;
+    align-items: center;
+    text-align: center;
+  }
+  .dt-section__title {
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
+    letter-spacing: -0.03em;
+  }
+  .dt-section__sub {
+    color: var(--color-text-muted);
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.7;
+    max-width: 38rem;
+  }
+</style>

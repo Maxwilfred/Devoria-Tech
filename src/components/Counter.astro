@@ -1,0 +1,61 @@
+---
+interface Props {
+  value: number;
+  suffix?: string;
+  class?: string;
+}
+const { value, suffix = '', class: className } = Astro.props;
+---
+
+<span
+  class:list={['dt-counter', className]}
+  data-counter={value}
+  data-suffix={suffix}>0{suffix}</span
+>
+
+<script>
+  const fmt = (n: number) => new Intl.NumberFormat('fr-FR').format(n);
+
+  function run(el: HTMLElement) {
+    const target = Number(el.dataset.counter || '0');
+    const suffix = el.dataset.suffix || '';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      el.textContent = fmt(target) + suffix;
+      return;
+    }
+    const dur = 1400;
+    const start = performance.now();
+    function tick(now: number) {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(target * eased)) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const counters = document.querySelectorAll<HTMLElement>('[data-counter]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            run(e.target as HTMLElement);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    counters.forEach((c) => io.observe(c));
+  } else {
+    counters.forEach(run);
+  }
+</script>
+
+<style>
+  .dt-counter {
+    font-variant-numeric: tabular-nums;
+  }
+</style>
