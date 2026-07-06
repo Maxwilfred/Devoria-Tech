@@ -1,32 +1,31 @@
 ---
 import Icon from './Icon.astro';
 import SpotlightCard from './react/SpotlightCard.tsx';
-import { services } from '../data/site';
+import { serviceFamilies } from '../data/catalog';
 
 /* Répartition asymétrique (type linear.app) sur 12 colonnes desktop.
-   Odoo = carte vedette large. */
+   Systèmes d'information = carte vedette large. */
 const spans = ['bento--feature', 'bento--md', 'bento--md', 'bento--sm', 'bento--sm'];
-const chips = ['CRM', 'Ventes', 'Stock', 'Achats', 'Compta', 'IoT'];
 ---
 
 <div class="bento">
   {
-    services.map((s, i) => (
+    serviceFamilies.map((fam, i) => (
       <SpotlightCard
         client:media="(hover: hover) and (pointer: fine)"
         className={`bento__cell ${spans[i]}`}
       >
-        <a href={`/services#${s.id}`} class="bento__card" data-reveal style={`--reveal-delay:${i * 60}ms`}>
+        <a href={`/services#${fam.id}`} class="bento__card" data-reveal style={`--reveal-delay:${i * 60}ms`}>
           <span class="bento__icon">
-            <Icon name={s.icon} size={22} />
+            <Icon name={fam.icon} size={22} />
           </span>
           <div class="bento__text">
-            <h3 class="bento__title">{s.title}</h3>
-            <p class="bento__desc">{s.short}</p>
+            <h3 class="bento__title">{fam.name}</h3>
+            <p class="bento__desc">{fam.blurb}</p>
           </div>
           {i === 0 && (
             <div class="bento__chips" aria-hidden="true">
-              {chips.map((c) => (
+              {serviceFamilies.flatMap((f) => f.tags).slice(0, 8).map((c) => (
                 <span class="bento__chip">{c}</span>
               ))}
             </div>

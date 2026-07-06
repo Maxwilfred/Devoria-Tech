@@ -4,64 +4,114 @@ import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import CtaSection from '../components/CtaSection.astro';
 import Icon from '../components/Icon.astro';
-import { services, pricing, rates } from '../data/site';
+import { serviceFamilies, approche360 } from '../data/catalog';
+import { pricing, rates } from '../data/site';
+
+/* Icône par service (par mots-clés, robuste aux apostrophes typographiques) */
+function svcIcon(title: string, fallback: string): string {
+  const t = title.toLowerCase();
+  if (t.includes('crm')) return 'users';
+  if (t.startsWith('mes')) return 'chart-dots';
+  if (t.startsWith('erp')) return 'database';
+  if (t.includes('site web')) return 'world-www';
+  if (t.includes('mobile')) return 'device-mobile';
+  if (t.includes('application web')) return 'browser';
+  if (t.includes('bureautique')) return 'device-desktop';
+  if (t.includes('intelligence')) return 'sparkles';
+  if (t.includes('iot')) return 'plug-connected';
+  if (t.includes('agriculture')) return 'leaf';
+  if (t.includes('digitalisation')) return 'refresh';
+  if (t.includes('rpa')) return 'robot';
+  if (t.includes('automatisation industrielle')) return 'settings';
+  if (t.includes('applications industrielles')) return 'building-factory';
+  if (t.includes('infrastructure')) return 'server';
+  return fallback;
+}
 ---
 
 <BaseLayout
   title="Services"
-  description="Découvrez toutes les solutions digitales de DevoriaTech : Odoo ERP, sites web, apps mobiles, formation et automatisation IA. Tarifs clairs et transparents."
+  description="Le catalogue complet DevoriaTech : systèmes d’information (CRM, MES, ERP), développement web et mobile, IA, IoT/IIoT, automatisation industrielle, smart agriculture et infrastructure IT."
   path="/services"
 >
   <PageHero
     eyebrow="Ce que nous proposons"
-    title="Nos services digitaux"
-    sub="Des solutions complètes pour digitaliser votre entreprise, de l’ERP au site web en passant par les applications mobiles."
+    title="La transformation numérique, de bout en bout"
+    sub="Des systèmes d’information à l’automatisation industrielle : nous couvrons tout le cycle de vie du numérique dans votre entreprise. Notre cœur de métier reste la digitalisation des entreprises."
   />
 
-  <!-- BLOCS SERVICES -->
-  <div class="svc">
-    <div class="container-dt">
+  <!-- APPROCHE 360° + navigation par famille -->
+  <Section
+    eyebrow="Notre approche 360°"
+    title="Une vision complète du numérique"
+    sub="Cinq familles qui couvrent la stratégie, les interfaces, l’intelligence, la transformation et le cœur physique de votre entreprise."
+    centered
+  >
+    <div class="pillars">
       {
-        services.map((s, i) => (
-          <article id={s.id} class="svc__block">
-            <div class="svc__text" data-reveal>
-              <span class="svc__icon">
-                <Icon name={s.icon} size={26} />
-              </span>
-              <h2 class="svc__title">{s.title}</h2>
-              <p class="svc__desc">{s.description}</p>
-              <ul class="svc__list">
-                {s.features.map((f) => (
-                  <li>
-                    <Icon name="check" size={17} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a href="/contact" class="btn btn-primary svc__cta">
-                {s.cta} <Icon name="arrow-right" size={18} />
-              </a>
-            </div>
-            <div class="svc__visual" data-reveal style="--reveal-delay:100ms">
-              <div class="svc__panel">
-                <span class="svc__panel-glow" aria-hidden="true" />
-                <Icon name={s.icon} size={46} class="svc__panel-icon" />
-                <span class="svc__panel-label">{s.title}</span>
-                <span class="svc__panel-index">0{i + 1}</span>
-              </div>
-            </div>
-          </article>
+        approche360.map((p, i) => (
+          <a href={`#${serviceFamilies[i].id}`} class="pillar" data-reveal style={`--reveal-delay:${i * 60}ms`}>
+            <span class="pillar__icon"><Icon name={p.icon} size={22} /></span>
+            <span class="pillar__title">{p.title}</span>
+            <span class="pillar__text">{p.text}</span>
+          </a>
         ))
       }
     </div>
-  </div>
+  </Section>
 
-  <!-- PACKAGES -->
+  <!-- FAMILLES DE SERVICES -->
+  {
+    serviceFamilies.map((fam, fi) => (
+      <section id={fam.id} class:list={['fam', { 'fam--surface': fi % 2 === 1 }]}>
+        <div class="container-dt">
+          <header class="fam__head" data-reveal>
+            <span class="fam__icon"><Icon name={fam.icon} size={26} /></span>
+            <div>
+              <span class="fam__eyebrow">Famille {String(fi + 1).padStart(2, '0')}</span>
+              <h2 class="fam__name">{fam.name}</h2>
+              <p class="fam__tagline">{fam.tagline}</p>
+            </div>
+          </header>
+
+          <div class="cat-grid">
+            {fam.services.map((svc, si) => (
+              <article class="cat-card" data-reveal style={`--reveal-delay:${(si % 2) * 70}ms`}>
+                <span class="cat-card__icon">
+                  <Icon name={svcIcon(svc.title, fam.icon)} size={22} />
+                </span>
+                <h3 class="cat-card__title">{svc.title}</h3>
+                {svc.tagline && <p class="cat-card__tagline">{svc.tagline}</p>}
+                <p class="cat-card__desc">{svc.description}</p>
+                {svc.sub && (
+                  <ul class="cat-card__sub">
+                    {svc.sub.map((s) => (
+                      <li>
+                        <strong>{s.label}</strong> — {s.text}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <div class="cat-card__delivers">
+                  <span class="cat-card__delivers-label">
+                    <Icon name="package" size={15} /> Ce que nous livrons
+                  </span>
+                  <p>{svc.delivers}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- PACKAGES ODOO -->
   <Section
     surface
     eyebrow="Nos packages Odoo"
     title="Tarifs clairs et transparents"
-    sub="Tous nos prix sont en EUR. Acompte de 50 % à la signature, solde à la livraison."
+    sub="Pour démarrer votre digitalisation avec Odoo. Tous nos prix sont en EUR. Acompte de 50 % à la signature, solde à la livraison."
     centered
   >
     <div class="pricing">
@@ -123,113 +173,199 @@ import { services, pricing, rates } from '../data/site';
 </BaseLayout>
 
 <style>
-  /* ── Blocs services ── */
-  .svc__block {
+  /* ── Approche 360° ── */
+  .pillars {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: center;
-    padding-block: clamp(2.5rem, 6vw, 4.5rem);
-    border-bottom: 1px solid var(--color-border);
+    gap: 0.9rem;
   }
-  .svc__icon {
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.4rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition:
+      transform 0.25s var(--ease-smooth),
+      border-color 0.25s var(--ease-smooth);
+  }
+  .pillar:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+  }
+  .pillar__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 54px;
-    height: 54px;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    margin-bottom: 0.3rem;
+  }
+  .pillar__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .pillar__text {
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── Familles ── */
+  .fam {
+    padding-block: clamp(3rem, 7vw, 5rem);
+    scroll-margin-top: 80px;
+  }
+  .fam--surface {
+    background: var(--color-surface);
+    border-block: 1px solid var(--color-border);
+  }
+  .fam__head {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+    margin-bottom: 2.2rem;
+  }
+  .fam__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+  .fam__eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+  .fam__name {
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    margin-block: 0.2rem 0.2rem;
+  }
+  .fam__tagline {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    align-items: start;
+  }
+  .cat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.6rem;
+    height: 100%;
+    transition:
+      transform 0.25s var(--ease-smooth),
+      border-color 0.25s var(--ease-smooth),
+      box-shadow 0.25s var(--ease-smooth);
+  }
+  .fam--surface .cat-card {
+    background: var(--color-bg);
+  }
+  .cat-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-md);
+  }
+  .cat-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
     border-radius: var(--radius);
     background: var(--color-accent-soft);
     color: var(--color-accent);
     border: 1px solid var(--color-border);
-    margin-bottom: 1.2rem;
   }
-  .svc__title {
-    font-size: clamp(1.5rem, 3.5vw, 2rem);
-    margin-bottom: 1rem;
+  .cat-card__title {
+    font-size: 1.12rem;
+    letter-spacing: -0.02em;
   }
-  .svc__desc {
+  .cat-card__tagline {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    margin-top: -0.3rem;
+  }
+  .cat-card__desc {
+    font-size: 0.9rem;
     color: var(--color-text-muted);
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-    max-width: 42ch;
+    line-height: 1.65;
   }
-  .svc__list {
+  .cat-card__sub {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
-    margin-bottom: 2rem;
+    gap: 0.5rem;
+    margin-block: 0.2rem;
   }
-  .svc__list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    font-size: 0.92rem;
+  .cat-card__sub li {
+    font-size: 0.86rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--color-border-strong);
+  }
+  .cat-card__sub strong {
     color: var(--color-text);
+    font-weight: 500;
   }
-  .svc__list :global(svg) {
-    color: var(--color-accent);
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-  .svc__panel {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 1rem;
-    min-height: 260px;
-    padding: 2rem;
-    border-radius: var(--radius-xl);
-    background: var(--color-surface);
+  .cat-card__delivers {
+    margin-top: auto;
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius);
+    background: var(--color-accent-soft);
     border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-md);
   }
-  .svc__panel-glow {
-    position: absolute;
-    inset: -40% -20% auto auto;
-    width: 300px;
-    aspect-ratio: 1;
-    background: radial-gradient(circle, var(--glow-accent), transparent 65%);
-    filter: blur(30px);
-    pointer-events: none;
-  }
-  .svc__panel-icon {
+  .cat-card__delivers-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     color: var(--color-accent);
+    margin-bottom: 0.35rem;
   }
-  .svc__panel-label {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    max-width: 16ch;
-  }
-  .svc__panel-index {
-    position: absolute;
-    right: 1.6rem;
-    bottom: 1.2rem;
-    font-family: var(--font-display);
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--color-border-strong);
-    letter-spacing: -0.04em;
-    line-height: 1;
+  .cat-card__delivers p {
+    font-size: 0.85rem;
+    color: var(--color-text);
+    line-height: 1.55;
   }
 
-  @media (min-width: 900px) {
-    .svc__block {
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 4rem;
+  @media (min-width: 720px) {
+    .pillars {
+      grid-template-columns: repeat(5, 1fr);
     }
-    .svc__block:nth-child(even) .svc__text {
-      order: 2;
+    .cat-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  /* ── Pricing ── */
+  /* ── Pricing (repris) ── */
   .pricing {
     display: grid;
     grid-template-columns: 1fr;
@@ -324,7 +460,7 @@ import { services, pricing, rates } from '../data/site';
     }
   }
 
-  /* ── Tarifs à la carte ── */
+  /* ── Tarifs à la carte (repris) ── */
   .rates {
     max-width: 60rem;
     margin-inline: auto;

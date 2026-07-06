@@ -5,6 +5,7 @@ import Section from '../components/Section.astro';
 import CtaSection from '../components/CtaSection.astro';
 import Icon from '../components/Icon.astro';
 import { values, geoCards } from '../data/site';
+import { ambitions, pillars } from '../data/catalog';
 
 const founderTags = ['Odoo ERP', 'Python', 'IoT', 'IA', 'Dev Web'];
 const associateProfiles = [
@@ -71,6 +72,49 @@ const associateProfiles = [
             </span>
             <h3>{v.title}</h3>
             <p>{v.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- AMBITION -->
+  <Section
+    eyebrow="Notre ambition"
+    title="Voir grand pour l’Afrique"
+    sub="Au-delà des projets, une vision : faire du numérique un levier de développement à l’échelle du continent."
+    centered
+  >
+    <div class="ambitions">
+      {
+        ambitions.map((a, i) => (
+          <article class="ambition" data-reveal style={`--reveal-delay:${i * 70}ms`}>
+            <span class="ambition__icon"><Icon name={a.icon} size={24} /></span>
+            <div>
+              <h3>{a.title}</h3>
+              <p>{a.text}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- PILIERS -->
+  <Section
+    surface
+    eyebrow="Notre approche"
+    title="Bien plus que du développement"
+    sub="Nous accompagnons chaque entreprise de la conception à la montée en compétences de ses équipes."
+    centered
+  >
+    <div class="pillars-grid">
+      {
+        pillars.map((p, i) => (
+          <article class="pillar-card" data-reveal style={`--reveal-delay:${(i % 3) * 70}ms`}>
+            <span class="pillar-card__icon"><Icon name={p.icon} size={22} /></span>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
           </article>
         ))
       }
@@ -201,6 +245,86 @@ const associateProfiles = [
     color: var(--color-text-muted);
   }
 
+  /* Ambitions */
+  .ambitions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 52rem;
+    margin-inline: auto;
+    text-align: left;
+  }
+  .ambition {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition:
+      transform 0.25s var(--ease-smooth),
+      border-color 0.25s var(--ease-smooth);
+  }
+  .ambition:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+  }
+  .ambition__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+  .ambition h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+  .ambition p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* Piliers */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .pillar-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.6rem;
+    text-align: left;
+  }
+  .pillar-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .pillar-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+  .pillar-card p {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
   /* MVP */
   .mvp {
     display: grid;
@@ -316,11 +440,20 @@ const associateProfiles = [
     .geo {
       grid-template-columns: repeat(2, 1fr);
     }
+    .ambitions {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .pillars-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   @media (min-width: 960px) {
     .founder {
       grid-template-columns: 1.15fr 0.85fr;
       gap: 4rem;
+    }
+    .pillars-grid {
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 </style>
