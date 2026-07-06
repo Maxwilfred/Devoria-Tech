@@ -5,7 +5,7 @@
 
 export const site = {
   name: 'DevoriaTech',
-  tagline: 'Solutions digitales — Afrique',
+  tagline: 'Solutions digitales · Afrique',
   domain: 'https://devoriatech.com',
   email: 'contact@devoriatech.com',
   linkedin: 'https://linkedin.com/in/maxwilfred-gak',
@@ -44,9 +44,9 @@ export const services: Service[] = [
     icon: 'grid',
     title: 'Implémentation Odoo ERP/CRM',
     short:
-      'Déploiement complet d’Odoo pour gérer vos ventes, achats, stock et relation client — paramétré selon votre activité.',
+      'Déploiement complet d’Odoo pour gérer vos ventes, achats, stock et relation client, paramétré selon votre activité.',
     description:
-      'Odoo est l’un des ERP les plus puissants et accessibles du marché. Nous déployons et configurons Odoo pour votre activité spécifique — que vous soyez dans le commerce, la distribution, les services ou l’industrie.',
+      'Odoo est l’un des ERP les plus puissants et accessibles du marché. Nous déployons et configurons Odoo pour votre activité spécifique, que vous soyez dans le commerce, la distribution, les services ou l’industrie.',
     features: [
       'Installation Odoo Community ou Enterprise',
       'Modules CRM, Ventes, Stock, Achats, Comptabilité',
@@ -62,13 +62,13 @@ export const services: Service[] = [
     icon: 'browser',
     title: 'Création de sites web',
     short:
-      'Sites vitrines, e-commerce ou plateformes sur mesure — design moderne, responsive et optimisé pour convertir.',
+      'Sites vitrines, e-commerce ou plateformes sur mesure : design moderne, responsive et optimisé pour convertir.',
     description:
       'Un site web professionnel est votre première vitrine digitale. Nous créons des sites modernes, rapides et optimisés pour convertir vos visiteurs en clients, adaptés à votre secteur et à votre marché.',
     features: [
       'Site vitrine professionnel (5 à 10 pages)',
       'Site e-commerce avec gestion des commandes',
-      'Design responsive — parfait sur mobile',
+      'Design responsive, parfait sur mobile',
       'Optimisation SEO incluse',
       'Bilingue français/anglais si besoin',
       'Intégration formulaire de contact et WhatsApp',
@@ -142,7 +142,7 @@ export const whyPoints = [
   {
     num: '03',
     title: 'Accompagnement humain de bout en bout',
-    text: 'Formation, support et évolutions après livraison — parce que votre succès est le nôtre.',
+    text: 'Formation, support et évolutions après livraison, parce que votre succès est le nôtre.',
   },
 ] as const;
 
@@ -241,7 +241,7 @@ export const odooModules = [
 ] as const;
 
 export const odooProcess = [
-  { num: 1, title: 'Analyse & cadrage', text: 'On étudie votre activité en détail — vos processus actuels, vos besoins, vos contraintes et vos objectifs. C’est la base de tout projet réussi.', duration: '1–2 jours' },
+  { num: 1, title: 'Analyse & cadrage', text: 'On étudie votre activité en détail : vos processus actuels, vos besoins, vos contraintes et vos objectifs. C’est la base de tout projet réussi.', duration: '1–2 jours' },
   { num: 2, title: 'Proposition & devis', text: 'Devis détaillé avec modules recommandés, planning et conditions. Acompte de 50% à la signature.', duration: '24–48h' },
   { num: 3, title: 'Installation & configuration', text: 'Installation, configuration, paramétrage et import de vos données existantes.', duration: '1–3 semaines' },
   { num: 4, title: 'Tests & validation', text: 'Tests complets avec vos données réelles. Tout est validé avant la mise en production.', duration: '2–5 jours' },
@@ -342,12 +342,12 @@ export const values = [
   {
     icon: 'target',
     title: 'Notre mission',
-    text: 'Rendre la digitalisation accessible aux PME et startups d’Afrique — avec les mêmes outils que les grandes entreprises, à des tarifs adaptés.',
+    text: 'Rendre la digitalisation accessible aux PME et startups d’Afrique, avec les mêmes outils que les grandes entreprises, à des tarifs adaptés.',
   },
   {
     icon: 'eye',
     title: 'Notre vision',
-    text: 'Être le partenaire digital de référence pour les entreprises africaines — de Casablanca à Abidjan, et au-delà vers toute l’Afrique.',
+    text: 'Être le partenaire digital de référence pour les entreprises africaines, de Casablanca à Abidjan, et au-delà vers toute l’Afrique.',
   },
   {
     icon: 'bolt',
@@ -359,12 +359,12 @@ export const values = [
 export const geoCards = [
   {
     flag: '🇲🇦',
-    title: 'Maroc — Casablanca',
+    title: 'Maroc · Casablanca',
     text: 'Siège de lancement. Un marché digital mature avec une forte demande en digitalisation des PME, notamment dans le commerce et les services.',
   },
   {
     flag: '🇨🇮',
-    title: 'Côte d’Ivoire — Abidjan',
+    title: 'Côte d’Ivoire · Abidjan',
     text: 'Prochain ancrage stratégique. L’économie la plus dynamique d’Afrique de l’Ouest, avec un tissu de PME en forte croissance et un besoin réel de digitalisation.',
   },
 ] as const;
@@ -385,7 +385,7 @@ export const faq = [
   },
   {
     q: 'Combien de temps dure une implémentation Odoo ?',
-    a: 'Le package Starter est livré en 1 à 2 semaines. Le Business en 3 à 5 semaines. Les projets Enterprise dépendent de la complexité — nous établissons un planning détaillé à la signature.',
+    a: 'Le package Starter est livré en 1 à 2 semaines. Le Business en 3 à 5 semaines. Les projets Enterprise dépendent de la complexité : nous établissons un planning détaillé à la signature.',
   },
   {
     q: 'Quelle est la différence entre Odoo Community et Enterprise ?',

@@ -353,7 +353,7 @@ import { WHATSAPP_URL, WHATSAPP_CONFIGURED, FORMSPREE_ACTION, FORMSPREE_CONFIGUR
         const lines = [];
         data.forEach((v, k) => lines.push(k + ' : ' + v));
         const body = encodeURIComponent(lines.join('\n'));
-        const subject = encodeURIComponent('Demande de projet — DevoriaTech');
+        const subject = encodeURIComponent('Demande de projet · DevoriaTech');
         window.location.href = 'mailto:' + mailto + '?subject=' + subject + '&body=' + body;
         return;
       }

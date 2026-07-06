@@ -33,20 +33,20 @@ export const serviceFamilies: ServiceFamily[] = [
     tags: ['CRM', 'MES', 'ERP'],
     services: [
       {
-        title: 'CRM — Gestion de la relation client',
+        title: 'CRM · Gestion de la relation client',
         description:
           'Centralisez tout ce qui touche à vos clients : prospects, contacts, historique des appels, devis et réclamations. Améliorez votre relation client et fidélisez en ayant une vision unique de chaque interlocuteur.',
         delivers:
           'Une plateforme connectée (Salesforce, HubSpot ou solution sur mesure) avec des tableaux de bord pour vos commerciaux.',
       },
       {
-        title: 'MES — Pilotage de la production',
+        title: 'MES · Pilotage de la production',
         description:
           'Surveillez et pilotez votre production en temps réel depuis l’atelier. Réduisez les arrêts machine, traquez les défauts qualité et optimisez vos rendements.',
         delivers: 'Des écrans de supervision avec remontée des données machines.',
       },
       {
-        title: 'ERP — Gestion globale',
+        title: 'ERP · Gestion globale',
         description:
           'Intégrez toutes vos fonctions (compta, RH, achats, stocks, production) dans une seule base de données. Évitez les doubles saisies et obtenez une vision financière et logistique en temps réel.',
         delivers: 'Un système central (SAP, Odoo) avec des modules paramétrés sur mesure.',
