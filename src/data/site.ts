@@ -9,7 +9,7 @@ export const site = {
   domain: 'https://devoriatech.com',
   email: 'contact@devoriatech.com',
   linkedin: 'https://linkedin.com/in/maxwilfred-gak',
-  founder: 'Max-Wilfred GAK-NANBAYE',
+  founder: 'DJASRANGUÉ G. Maxwilfred',
   description:
     'DevoriaTech accompagne les PME et startups d’Afrique dans leur transformation digitale : ERP Odoo, sites web, applications mobiles et automatisation IA.',
 } as const;
@@ -154,7 +154,7 @@ export const processSteps = [
 ] as const;
 
 export const geoPills = [
-  { label: 'Afrique francophone', color: '#3fe68c' },
+  { label: 'Afrique', color: '#3fe68c' },
   { label: 'PME & startups', color: '#185fa5' },
   { label: 'Sur mesure', color: '#0f6e56' },
 ] as const;
@@ -378,6 +378,6 @@ export const faq = [
 export const contactChannels = [
   { icon: 'mail', label: 'Email', value: 'contact@devoriatech.com', href: 'mailto:contact@devoriatech.com' },
   { icon: 'brand-linkedin', label: 'LinkedIn', value: 'maxwilfred-gak', href: 'https://linkedin.com/in/maxwilfred-gak' },
-  { icon: 'map-pin', label: 'Localisation', value: 'Afrique francophone · à distance', href: '' },
+  { icon: 'map-pin', label: 'Localisation', value: 'Afrique · à distance', href: '' },
   { icon: 'clock', label: 'Disponibilité', value: 'Lun–Sam · 9h–19h (GMT+1)', href: '' },
 ] as const;

@@ -35,24 +35,35 @@ const associateProfiles = [
         <h2 class="founder__title">Bâti par un développeur, pour des entrepreneurs</h2>
         <p>
           DevoriaTech est né de la rencontre entre une expertise technique solide et un
-          constat terrain : les PME et startups d’Afrique francophone ont besoin de
+          constat terrain : les PME et startups d’Afrique ont besoin de
           solutions digitales sérieuses, mais réellement adaptées à leur réalité.
         </p>
         <p>
           Après un Master en Management Digital et un projet de fin d’études centré sur
           Odoo avec intégrations IoT et IA, j’ai décidé de transformer cette expertise en
-          solutions concrètes pour les entreprises d’Afrique francophone.
+          solutions concrètes pour les entreprises d’Afrique.
         </p>
       </div>
 
       <aside class="founder__card" data-reveal style="--reveal-delay:100ms">
         <span class="founder__card-glow" aria-hidden="true"></span>
-        <span class="founder__avatar">MW</span>
-        <span class="founder__name">Max-Wilfred GAK-NANBAYE</span>
+        <div class="founder__photo">
+          <img
+            src="/founder.jpg"
+            alt="DJASRANGUÉ G. Maxwilfred, fondateur de DevoriaTech"
+            width="440"
+            height="480"
+            loading="lazy"
+            decoding="async"
+            onerror="this.remove()"
+          />
+          <span class="founder__photo-fallback" aria-hidden="true">DM</span>
+        </div>
+        <span class="founder__name">DJASRANGUÉ G. Maxwilfred</span>
         <span class="founder__role">Fondateur &amp; Expert Odoo · DevoriaTech</span>
         <p class="founder__bio">
           Expert en transformation digitale, spécialisé Odoo ERP/CRM. Master en Management
-          Digital, au service des entreprises d’Afrique francophone.
+          Digital, au service des entreprises d’Afrique.
         </p>
         <div class="founder__tags">
           {founderTags.map((t) => <span class="founder__tag">{t}</span>)}
@@ -183,19 +194,33 @@ const associateProfiles = [
     filter: blur(30px);
     pointer-events: none;
   }
-  .founder__avatar {
-    display: inline-flex;
+  .founder__photo {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1.3rem;
+    background: linear-gradient(135deg, #2472c2, #0c447c);
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #2472c2, #0c447c);
-    color: #fff;
+    border: 1px solid var(--color-border);
+  }
+  .founder__photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+  }
+  .founder__photo-fallback {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    font-size: 2.6rem;
+    color: #fff;
   }
   .founder__name {
     display: block;
