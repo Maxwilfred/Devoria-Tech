@@ -78,14 +78,7 @@ import { WHATSAPP_URL, WHATSAPP_CONFIGURED, FORMSPREE_ACTION, FORMSPREE_CONFIGUR
           <div class="form-row">
             <div class="field">
               <label for="pays">Pays *</label>
-              <select id="pays" name="pays" required>
-                <option value="">Sélectionner…</option>
-                <option value="maroc">🇲🇦 Maroc</option>
-                <option value="cote-ivoire">🇨🇮 Côte d’Ivoire</option>
-                <option value="senegal">🇸🇳 Sénégal</option>
-                <option value="cameroun">🇨🇲 Cameroun</option>
-                <option value="autre">Autre</option>
-              </select>
+              <input type="text" id="pays" name="pays" required placeholder="Votre pays" />
             </div>
             <div class="field">
               <label for="service">Service souhaité *</label>
@@ -101,14 +94,13 @@ import { WHATSAPP_URL, WHATSAPP_CONFIGURED, FORMSPREE_ACTION, FORMSPREE_CONFIGUR
             </div>
           </div>
           <div class="field">
-            <label for="budget">Budget estimé</label>
+            <label for="budget">Ampleur du projet</label>
             <select id="budget" name="budget">
-              <option value="">Sélectionner une fourchette</option>
-              <option value="lt500">Moins de 500 €</option>
-              <option value="500-1500">500 € – 1 500 €</option>
-              <option value="1500-3000">1 500 € – 3 000 €</option>
-              <option value="gt3000">Plus de 3 000 €</option>
-              <option value="unknown">Je ne sais pas encore</option>
+              <option value="">Sélectionner…</option>
+              <option value="decouverte">Découverte / petit projet</option>
+              <option value="standard">Projet standard</option>
+              <option value="envergure">Projet d’envergure</option>
+              <option value="adefinir">À définir ensemble</option>
             </select>
           </div>
           <div class="field">

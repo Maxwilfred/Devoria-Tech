@@ -109,9 +109,9 @@ function svcIcon(title: string, fallback: string): string {
   <!-- PACKAGES ODOO -->
   <Section
     surface
-    eyebrow="Nos packages Odoo"
-    title="Tarifs clairs et transparents"
-    sub="Pour démarrer votre digitalisation avec Odoo. Tous nos prix sont en EUR. Acompte de 50 % à la signature, solde à la livraison."
+    eyebrow="Nos formules Odoo"
+    title="Trois niveaux d’accompagnement"
+    sub="Du démarrage à l’ERP complet et sur-mesure. Chaque formule est ajustée à votre activité ; le devis est établi après un premier échange gratuit."
     centered
   >
     <div class="pricing">
@@ -124,10 +124,6 @@ function svcIcon(title: string, fallback: string): string {
           >
             {p.featured && 'badge' in p && <span class="pricing__badge">{p.badge}</span>}
             <span class="pricing__name">{p.name}</span>
-            <div class="pricing__price">
-              {p.price}
-              {p.unit && <span>{p.unit}</span>}
-            </div>
             <p class="pricing__desc">{p.desc}</p>
             <ul class="pricing__features">
               {p.features.map((f) => (
@@ -149,19 +145,17 @@ function svcIcon(title: string, fallback: string): string {
     </div>
   </Section>
 
-  <!-- TARIFS À LA CARTE -->
-  <Section eyebrow="Autres services" title="Tarifs à la carte">
+  <!-- AUTRES PRESTATIONS -->
+  <Section eyebrow="Autres prestations" title="Délais indicatifs de livraison">
     <div class="rates" data-reveal>
       <div class="rates__head">
-        <span>Service</span>
-        <span>Fourchette de prix</span>
-        <span>Délai moyen</span>
+        <span>Prestation</span>
+        <span>Délai indicatif</span>
       </div>
       {
         rates.map((r) => (
           <div class="rates__row">
             <span class="rates__svc">{r.service}</span>
-            <span class="rates__price">{r.price}</span>
             <span class="rates__delay">{r.delay}</span>
           </div>
         ))
@@ -471,7 +465,7 @@ function svcIcon(title: string, fallback: string): string {
   .rates__head,
   .rates__row {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 1rem;
     padding: 1rem 1.3rem;
     align-items: center;

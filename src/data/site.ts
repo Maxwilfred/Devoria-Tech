@@ -22,9 +22,9 @@ export const nav = [
 ] as const;
 
 export const heroStats = [
-  { value: 5, suffix: '+', label: 'Services digitaux' },
-  { value: 2, suffix: '', label: 'Pays couverts' },
-  { value: 50, suffix: '%', label: 'Acompte à la signature' },
+  { value: 15, suffix: '', label: 'Domaines d’expertise' },
+  { value: 5, suffix: '', label: 'Familles de services' },
+  { value: 100, suffix: '%', label: 'Sur mesure' },
   { value: 24, suffix: 'h', label: 'Réponse garantie' },
 ] as const;
 
@@ -136,8 +136,8 @@ export const whyPoints = [
   },
   {
     num: '02',
-    title: 'Tarifs adaptés au marché africain',
-    text: 'Expertise équivalente aux intégrateurs européens, à des prix accessibles aux PME africaines.',
+    title: 'Accessible aux entreprises africaines',
+    text: 'Une expertise de niveau international, pensée pour rester accessible aux PME et startups du continent.',
   },
   {
     num: '03',
@@ -154,17 +154,15 @@ export const processSteps = [
 ] as const;
 
 export const geoPills = [
-  { label: 'Maroc', color: '#c01d27' },
-  { label: 'Côte d’Ivoire', color: '#f77f00' },
-  { label: 'Afrique', color: '#185fa5' },
+  { label: 'Afrique francophone', color: '#3fe68c' },
+  { label: 'PME & startups', color: '#185fa5' },
+  { label: 'Sur mesure', color: '#0f6e56' },
 ] as const;
 
 /* ── Packages Odoo (page services) ── */
 export const pricing = [
   {
     name: 'Starter',
-    price: '800 €',
-    unit: 'one-shot',
     featured: false,
     desc: 'Pour les TPE et startups qui démarrent leur digitalisation.',
     features: [
@@ -178,8 +176,6 @@ export const pricing = [
   },
   {
     name: 'Business',
-    price: '1 800 €',
-    unit: 'one-shot',
     featured: true,
     badge: 'Le plus demandé',
     desc: 'Pour les PME qui veulent un ERP complet et opérationnel.',
@@ -195,8 +191,6 @@ export const pricing = [
   },
   {
     name: 'Enterprise',
-    price: 'Sur devis',
-    unit: '',
     featured: false,
     desc: 'Pour les entreprises avec des besoins spécifiques et intégrations complexes.',
     features: [
@@ -212,12 +206,12 @@ export const pricing = [
 ] as const;
 
 export const rates = [
-  { service: 'Site web vitrine (5–8 pages)', price: '400 – 900 €', delay: '2–3 semaines' },
-  { service: 'Site e-commerce', price: '900 – 2 500 €', delay: '3–6 semaines' },
-  { service: 'Application mobile (MVP)', price: '2 000 – 5 000 €', delay: '6–12 semaines' },
-  { service: 'Formation Odoo (demi-journée)', price: '150 – 300 €', delay: '1 jour' },
-  { service: 'Automatisation IA (prototype)', price: '500 – 1 500 €', delay: '2–4 semaines' },
-  { service: 'Maintenance mensuelle', price: '100 – 400 €/mois', delay: 'Récurrent' },
+  { service: 'Site web vitrine (5–8 pages)', delay: '2–3 semaines' },
+  { service: 'Site e-commerce', delay: '3–6 semaines' },
+  { service: 'Application mobile (MVP)', delay: '6–12 semaines' },
+  { service: 'Formation Odoo (demi-journée)', delay: '1 jour' },
+  { service: 'Automatisation IA (prototype)', delay: '2–4 semaines' },
+  { service: 'Maintenance mensuelle', delay: 'Récurrent' },
 ] as const;
 
 /* ── Odoo (page solutions) ── */
@@ -242,7 +236,7 @@ export const odooModules = [
 
 export const odooProcess = [
   { num: 1, title: 'Analyse & cadrage', text: 'On étudie votre activité en détail : vos processus actuels, vos besoins, vos contraintes et vos objectifs. C’est la base de tout projet réussi.', duration: '1–2 jours' },
-  { num: 2, title: 'Proposition & devis', text: 'Devis détaillé avec modules recommandés, planning et conditions. Acompte de 50% à la signature.', duration: '24–48h' },
+  { num: 2, title: 'Proposition & devis', text: 'Devis détaillé avec modules recommandés, planning et conditions.', duration: '24–48h' },
   { num: 3, title: 'Installation & configuration', text: 'Installation, configuration, paramétrage et import de vos données existantes.', duration: '1–3 semaines' },
   { num: 4, title: 'Tests & validation', text: 'Tests complets avec vos données réelles. Tout est validé avant la mise en production.', duration: '2–5 jours' },
   { num: 5, title: 'Formation de vos équipes', text: 'Formation en visio ou en présentiel. Documentation personnalisée remise à la fin.', duration: '4h – 2 jours' },
@@ -342,12 +336,12 @@ export const values = [
   {
     icon: 'target',
     title: 'Notre mission',
-    text: 'Rendre la digitalisation accessible aux PME et startups d’Afrique, avec les mêmes outils que les grandes entreprises, à des tarifs adaptés.',
+    text: 'Rendre la digitalisation accessible aux PME et startups d’Afrique, avec les mêmes outils que les grandes entreprises.',
   },
   {
     icon: 'eye',
     title: 'Notre vision',
-    text: 'Être le partenaire digital de référence pour les entreprises africaines, de Casablanca à Abidjan, et au-delà vers toute l’Afrique.',
+    text: 'Être le partenaire digital de référence pour les entreprises africaines, au service de tout le continent.',
   },
   {
     icon: 'bolt',
@@ -356,28 +350,16 @@ export const values = [
   },
 ] as const;
 
-export const geoCards = [
-  {
-    flag: '🇲🇦',
-    title: 'Maroc · Casablanca',
-    text: 'Siège de lancement. Un marché digital mature avec une forte demande en digitalisation des PME, notamment dans le commerce et les services.',
-  },
-  {
-    flag: '🇨🇮',
-    title: 'Côte d’Ivoire · Abidjan',
-    text: 'Prochain ancrage stratégique. L’économie la plus dynamique d’Afrique de l’Ouest, avec un tissu de PME en forte croissance et un besoin réel de digitalisation.',
-  },
-] as const;
 
 /* ── Contact / FAQ ── */
 export const faq = [
   {
     q: 'Combien coûte une implémentation Odoo ?',
-    a: 'Nos packages démarrent à 800 € pour le Starter (2 modules) et 1 800 € pour le Business (4 modules). Pour des projets plus complexes, nous établissons un devis sur mesure. Premier échange toujours gratuit.',
+    a: 'Cela dépend du périmètre : nombre de modules, migration de données, formation. Nous établissons un devis sur mesure après un premier échange, toujours gratuit.',
   },
   {
     q: 'Vous intervenez à distance ou en présentiel ?',
-    a: 'Les deux. La majorité de nos projets se font à distance (appel vidéo, accès serveur distant). Pour les clients au Maroc ou en Côte d’Ivoire, nous pouvons intervenir en présentiel selon le projet.',
+    a: 'Les deux. La majorité de nos projets se font à distance (appel vidéo, accès serveur distant). Selon votre localisation en Afrique, nous pouvons aussi intervenir en présentiel selon le projet.',
   },
   {
     q: 'Quelles sont vos conditions de paiement ?',
@@ -396,6 +378,6 @@ export const faq = [
 export const contactChannels = [
   { icon: 'mail', label: 'Email', value: 'contact@devoriatech.com', href: 'mailto:contact@devoriatech.com' },
   { icon: 'brand-linkedin', label: 'LinkedIn', value: 'maxwilfred-gak', href: 'https://linkedin.com/in/maxwilfred-gak' },
-  { icon: 'map-pin', label: 'Localisation', value: 'Casablanca, Maroc · Abidjan, Côte d’Ivoire', href: '' },
+  { icon: 'map-pin', label: 'Localisation', value: 'Afrique francophone · à distance', href: '' },
   { icon: 'clock', label: 'Disponibilité', value: 'Lun–Sam · 9h–19h (GMT+1)', href: '' },
 ] as const;

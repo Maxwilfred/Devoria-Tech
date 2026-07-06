@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import CtaSection from '../components/CtaSection.astro';
 import Icon from '../components/Icon.astro';
-import { values, geoCards } from '../data/site';
+import { values } from '../data/site';
 import { ambitions, pillars } from '../data/catalog';
 
 const founderTags = ['Odoo ERP', 'Python', 'IoT', 'IA', 'Dev Web'];
@@ -36,12 +36,12 @@ const associateProfiles = [
         <p>
           DevoriaTech est né de la rencontre entre une expertise technique solide et un
           constat terrain : les PME et startups d’Afrique francophone ont besoin de
-          solutions digitales sérieuses, mais à des tarifs adaptés à leur réalité.
+          solutions digitales sérieuses, mais réellement adaptées à leur réalité.
         </p>
         <p>
           Après un Master en Management Digital et un projet de fin d’études centré sur
           Odoo avec intégrations IoT et IA, j’ai décidé de transformer cette expertise en
-          solutions concrètes pour les entreprises du Maroc et de Côte d’Ivoire.
+          solutions concrètes pour les entreprises d’Afrique francophone.
         </p>
       </div>
 
@@ -52,7 +52,7 @@ const associateProfiles = [
         <span class="founder__role">Fondateur &amp; Expert Odoo · DevoriaTech</span>
         <p class="founder__bio">
           Expert en transformation digitale, spécialisé Odoo ERP/CRM. Master en Management
-          Digital. Basé à Casablanca, en route vers Abidjan.
+          Digital, au service des entreprises d’Afrique francophone.
         </p>
         <div class="founder__tags">
           {founderTags.map((t) => <span class="founder__tag">{t}</span>)}
@@ -121,23 +121,8 @@ const associateProfiles = [
     </div>
   </Section>
 
-  <!-- PRÉSENCE GÉO -->
-  <Section eyebrow="Notre présence" title="Deux pays, un seul engagement" sub="DevoriaTech opère au Maroc et en Côte d’Ivoire, deux marchés à fort potentiel de digitalisation, avec une vision panafricaine.">
-    <div class="geo">
-      {
-        geoCards.map((g, i) => (
-          <article class="geo__card" data-reveal style={`--reveal-delay:${i * 90}ms`}>
-            <span class="geo__flag">{g.flag}</span>
-            <h3>{g.title}</h3>
-            <p>{g.text}</p>
-          </article>
-        ))
-      }
-    </div>
-  </Section>
-
   <!-- ASSOCIÉ -->
-  <Section surface eyebrow="On grandit ensemble" title="Nous recherchons un associé" centered>
+  <Section eyebrow="On grandit ensemble" title="Nous recherchons un associé" centered>
     <div class="assoc" data-reveal>
       <span class="assoc__icon"><Icon name="handshake" size={30} /></span>
       <h3>Profil recherché : Tech + Business</h3>
