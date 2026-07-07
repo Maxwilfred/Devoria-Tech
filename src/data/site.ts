@@ -6,7 +6,7 @@
 export const site = {
   name: 'DevoriaTech',
   tagline: 'Solutions digitales · Afrique',
-  domain: 'https://devoriatech.com',
+  domain: 'https://devoriatech.netlify.app',
   email: 'contact@devoriatech.com',
   linkedin: 'https://linkedin.com/in/maxwilfred-gak',
   founder: 'DJASRANGUÉ G. Maxwilfred',

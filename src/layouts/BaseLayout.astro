@@ -24,6 +24,49 @@ const {
 const canonical = new URL(path, site.domain).href;
 const ogImageUrl = new URL(ogImage, site.domain).href;
 const fullTitle = title.includes('DevoriaTech') ? title : `${title} · DevoriaTech`;
+
+// Données structurées (JSON-LD) — aident Google à comprendre l'activité
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${site.domain}/#organization`,
+      name: 'DevoriaTech',
+      url: site.domain,
+      logo: `${site.domain}/logo-512.png`,
+      image: ogImageUrl,
+      description: site.description,
+      email: site.email,
+      slogan: 'Bâtir le digital qui dure',
+      founder: { '@type': 'Person', name: site.founder },
+      areaServed: { '@type': 'Place', name: 'Afrique' },
+      sameAs: [site.linkedin],
+      knowsAbout: [
+        'Odoo ERP',
+        'CRM',
+        'MES',
+        'Développement web',
+        'Applications mobiles',
+        'Intelligence artificielle',
+        'IoT',
+        'IIoT',
+        'Automatisation industrielle',
+        'Smart agriculture',
+        'Infrastructure informatique',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site.domain}/#website`,
+      url: site.domain,
+      name: 'DevoriaTech',
+      description: site.description,
+      inLanguage: 'fr-FR',
+      publisher: { '@id': `${site.domain}/#organization` },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -32,11 +75,13 @@ const fullTitle = title.includes('DevoriaTech') ? title : `${title} · DevoriaTe
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="author" content={site.founder} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#0a0a0b" />
     <meta name="generator" content={Astro.generator} />
 
@@ -47,8 +92,10 @@ const fullTitle = title.includes('DevoriaTech') ? title : `${title} · DevoriaTe
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DevoriaTech — solutions digitales pour l’Afrique" />
     <meta property="og:locale" content="fr_FR" />
 
     <!-- Twitter -->
@@ -56,6 +103,10 @@ const fullTitle = title.includes('DevoriaTech') ? title : `${title} · DevoriaTe
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="DevoriaTech — solutions digitales pour l’Afrique" />
+
+    <!-- Données structurées -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <!-- Anti-FOUC : applique le thème avant le premier paint -->
     <script is:inline>

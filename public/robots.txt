@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devoriatech.com/sitemap-index.xml
+Sitemap: https://devoriatech.netlify.app/sitemap-index.xml
